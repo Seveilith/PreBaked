@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>How to add a dynamic page!</title>
+<!-- TO CHANGE THE HORRIBLE CSS STYLE IN THE CODE COMMENTS. CHANGE THIS CSS TO ANY NAME IN THE compzki.svp.documentation.js.styles PACKAGE -->
+<link rel="stylesheet" href="js/styles/monokai.css">
+<script src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div>
+	<h1>How to build a dynamic page</h1>
+	<p>
+		This tutorial is for building a dynamic page, it should be followed after "Add Dynamic Page" tutorial. 
+		This tutorial focuses on the "build the webpage"-method mentioned at the end. Start with creating a 
+		a new class that you want to help with the creation of some sites. You can extend the PageFactory, 
+		add class that holds all your pages, or add one class per page you want to build. Place them/it inside
+		the <i>grupp6.svp.web</i>. In the following I will explain how I built the login page building method.
+		The login method generates the welcome page after login, if you entered the correct login information on the index page. 
+		I started with creating the method (login) and put a divider inside. I'm working to avoid mixing logic (communication with the LogicFacade) 
+		and web page building (communication with the ElementBuilder). 
+		<pre><code class="javascript">private void login(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
+		//Communication with the LogicFacade
+		response.setContentType("text/html"); //Divider
+		//Communication with the ElementBuilder (Build webpage)
+	}</code></pre>
+	</p>
+	<p>
+		The divider method used here tells the client the response content type (response = webpage). 
+		The resulting webpages is dependent on the success of login logic. 
+		When the user visits the site they can either be logged in, about to login, or don't have access. 
+		To see if the user is already logged in we need to retrive the variable "Username" from the current session. 
+		To see if the user can login we need to controll the variables username and password. 
+		If the above to statments fails the user do not have access and needs to be redirected. 
+		This logic forms the following code: 
+		<pre><code class="javascript">private void login(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
+		//To detect if the user is already logged in we need to fetch the current session.
+		//More on session handling can be found <a href="https://www.tutorialspoint.com/servlets/servlets-session-tracking.htm">here</a>.
+		HttpSession session = request.getSession(); 
+		
+			//From the session we need to get the username for the current logged in user
+			//It will return null if there is no registered logged in user
+        	String u = (String) session.getAttribute("Username");
+		
+		//If there is no registered logged in user in the session and username & password are <u>NOT</u> correct 
+		//We will redirect the request to the login_failed.jsp and return becouse there is nothing more todo.
+		//On the other hand there is no registered logged in user in the session (Success on login), we will set 
+		//the username attribute in the session to the username. Saving it in "the bucket" for future usage.
+		//For the last part we know that the username attribute is a correct value and therefore to a "lazy assigment".
+		//Skip checks to make the code easier to read and hopefully faster to run.
+		if(u == null && !LogicFacade.canLogin(username, password)){ //Failed login
+			response.sendRedirect("login_failed.jsp"); //Username & password are incorrect we respond with a redirect to login_failed.jsp
+			return;
+		} else if (u == null) { //Success on login
+	        	session.setAttribute("Username", username);
+		}
+		username = (String) session.getAttribute("Username"); //Last part
+		
+		response.setContentType("text/html"); //Divider
+		//Communication with the ElementBuilder (Build webpage)
+	}</code></pre>
+	</p>
+	<p>
+		Moving over to the communication with the ElementBuilder class, it is time to build the actual webpage. 
+		A HTML file consists of two large and important collections (&lt;tags&gt;) of information; &lt;header&gt; and &lt;body&gt;. 
+		The head consists on metadata (information that describes the page and external sources that are important). The body is 
+		what the web browser interperate and visualizes for you (The visual parts of the webpage). We need to insert these before 
+		we start with the building of the webpage. It will look like this;
+		<pre><code class="javascript">private void login(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
+		HttpSession session = request.getSession();
+        	String u = (String) session.getAttribute("Username");
+		
+		if(u == null && !LogicFacade.canLogin(username, password)){
+			response.sendRedirect("login_failed.jsp"); //Username & password are incorrect we respond with a redirect to login_failed.jsp
+			return;
+		} else if (u == null) {
+	        	session.setAttribute("Username", username);
+		}
+		username = (String) session.getAttribute("Username");
+		
+		response.setContentType("text/html"); //Divider between Logic & Page Building
+		
+		//First thing is that we need to get the outstream (An one-way out information channel of sorts).
+		//Anything we append (write) to the outstream will end up on the client side... 
+		//To make it easier we will refere to it as the output.
+		PrintWriter output = response.getWriter();
+		
+		//After we have retrived the output we can start appending to it.
+		//We need to start with adding our head to the output. With this
+		//we also add the CSS (./files/css/style.css), giving the webpage 
+		//some visual appeal. If you want to change the look and feel, but
+		//not the content of the webpage; change the CSS! For more on CSS click <a href="http://www.w3schools.com/html/html_css.asp">here</a>. 
+		//We also include a title in the addHead method for the page (Text that is often visable on links to or in tabs for a page). 
+		ElementBuilder.addHead(output, "Title - You are logged in!");
+		
+		//addHead method adds the start of the body. Therefore... HERE WE HAVE THE BODY! :)
+		
+		//Last we need to add an end to our page. This just adds end tags. 
+		ElementBuilder.addEnd(output);
+	}</code></pre>
+	</p>
+	<p>
+		Next step in building our webpage is to fill out the layout. The looks and feels of the layout is 
+		described in the CSS file mentioned above, while the content is inserted in the next step. 
+		I'm going for a standard two column layout (See figure 1).
+		<figure>
+			<img src="img/2_Column_Layout.png" /><br />
+			<i><figcaption>Figure 1: Page layout (<a href="https://code.tutsplus.com/tutorials/how-to-make-all-browsers-render-html5-mark-up-correctly-even-ie6--net-8669">Downloaded from</a>)</figcaption></i>
+		</figure>
+		For the moment, we only need to prepare for the content (Content is placed into containers). We have the header, nav, main, and footer container. The code for this will look like this;
+		<pre><code class="javascript">private void login(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
+		HttpSession session = request.getSession();
+        	String u = (String) session.getAttribute("Username");
+		
+		if(u == null && !LogicFacade.canLogin(username, password)){
+			response.sendRedirect("login_failed.jsp"); //Username & password are incorrect we respond with a redirect to login_failed.jsp
+			return;
+		} else if (u == null) {
+	        	session.setAttribute("Username", username);
+		}
+		username = (String) session.getAttribute("Username");
+		
+		response.setContentType("text/html"); //Divider between Logic & Page Building
+		
+		PrintWriter output = response.getWriter();
+		ElementBuilder.addHead(output, "Title - You are logged in!");
+		
+		//Adding the standard header to the page
+		//As it should be the same everywhere i just give the addHeader method 
+		//the request and response variables.
+		ElementBuilder.addHeader(request, response);
+		
+		//I want the Nav (left panel) and Main (center panel) to be next to each other and leave some space 
+		//between the edges to give the page a more open feeling. For this i need to encapsule both the
+		//Nav and Main container. In this case i call it the main container (mainContainer). It's only job
+		//is to keep Nav and Main together and add that extra space. To do this i directly append start of a 
+		//div with the class mainContainer first. Then i add the methods addLeftPanel (Nav) and addCenterPanel (Main), and finally closing it.
+		
+		output.append("&lt;div class=\"mainContainer\"&gt;");
+		
+		
+		ElementBuilder.addLeftPanel(output, "CONTENT"); //Adding Left Panel with some test content.
+		ElementBuilder.addCenterPanel(output, "CONTENT"); //Adding Center Panel with some test content.
+		
+		//This closes the mainContainer div.
+		output.append("&lt;/div&gt;");
+		
+		
+		//Adding the standard footer to the page
+		//As it should be the same everywhere i just give the addHeader method 
+		//the request and response variables.
+		ElementBuilder.addFooter(request, response);
+		ElementBuilder.addEnd(output);
+	}</code></pre>
+	</p>
+	<p>
+		This is the last and final step for this tutorial. It is now time to fill the containers Nav (Left Panel) and Main (Center Panel) with content. 
+		I want Nav to contain a standard navigation menu and Main to contain a welcome header and some random latin (To simulate some kind of greeting message). 
+		It will look like this (At the bottom there is a final note); 
+		<pre><code class="javascript">private void login(HttpServletRequest request, HttpServletResponse response, String username, String password) throws IOException, ServletException {
+		HttpSession session = request.getSession();
+        	String u = (String) session.getAttribute("Username");
+		
+		if(u == null && !LogicFacade.canLogin(username, password)){
+			response.sendRedirect("login_failed.jsp"); //Username & password are incorrect we respond with a redirect to login_failed.jsp
+			return;
+		} else if (u == null) {
+	        	session.setAttribute("Username", username);
+		}
+		username = (String) session.getAttribute("Username");
+		
+		response.setContentType("text/html"); //Divider between Logic & Page Building
+		
+		PrintWriter output = response.getWriter();
+		ElementBuilder.addHead(output, "Title - You are logged in!");
+		ElementBuilder.addHeader(request, response);
+		
+		output.append("&lt;div class=\"mainContainer\"&gt;");
+		
+		//I have changed "CONTENT" to values that will represent what i want.
+		//For Nav (Left Panel) i make ElementBuilder build a menu for me with the getMenu method. 
+		//For Main (Center panel) i fill the content by combining some hard coding and use the element builder.
+		ElementBuilder.addLeftPanel(output, ElementBuilder.getMenu());
+		ElementBuilder.addCenterPanel(output, "&lt;h1&gt; Welcome " + username + "!&lt;/h1&gt;" + "&lt;p&gt;" + ElementBuilder.getRandomLatin() + "&lt;/p&gt;");
+		
+		output.append("&lt;/div&gt;");
+		
+		ElementBuilder.addFooter(request, response);
+		ElementBuilder.addEnd(output);
+	}</code></pre>
+	</p>
+	<p>
+		<b>Final Note.</b> As we have containers (Header, Nav, Main, and Footer) and we have content there are two kind of methods in ElementBuilder. 
+		The first focuses on putting content into containers (E.g. addLeftPanel or addCenterPanel). addFooter and addHeader are considered 
+		"empty" containers as their content is always static. Then we have methods that generate content to put into containers (E.g. getMenu and getRandomLatin). 
+		We can make classes that will help us with the filling of content too (E.g. the Talbe class).
+		<i>I wish you good luck with the assignment and remember to be creative. This framework now belongs to you. </i>
+	</p>
+</div>
+</body>
+</html>

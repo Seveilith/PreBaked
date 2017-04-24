@@ -1,0 +1,81 @@
+/** HEADER **/
+
+.header {
+	background-color: #54d8e0;
+	margin-left: 100px;
+	width: 800px;
+}
+
+.header * {
+	display: inline-block;
+	margin-right: 10px; 
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.loga {
+		width: 300px;
+		height: 100px;
+}
+
+/** MAIN CONTAINER **/
+
+.mainContainer {
+	margin-left: 100px;
+	width: 800px;
+	height: 600px;
+	position: relative;
+}
+
+/** FOOTER **/
+
+.footer {
+	background-color: #54d8e0;
+	margin-left: 100px;
+	width: 800px;
+}
+
+.footer * {
+	display: inline-block;
+	margin-right: 10px; 
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+/** LAYOUT **/
+
+body {
+	
+}
+
+.leftPanel {
+	width: 290px;
+	height: 90%;
+	top: 0;
+    left: 0;
+    position: absolute;
+    border-style: solid;
+    border-color: #D8D8D8;
+}
+
+.centerPanel {
+	top: 10px;
+    left: 310px;
+    position: absolute;
+}
+
+/** FORM **/
+
+.loginForm {
+	margin: 30px;
+}
+
+/** OTHER **/
+
+.menu {
+	margin: 10px;
+}
+
+table, th, td {
+   border: 1px solid black;
+}

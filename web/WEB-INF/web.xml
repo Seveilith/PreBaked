@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- STANDARD VALUES FOR THIS WEB.XML FILE -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>WebApp-1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>fileServlet</servlet-name>
+    <servlet-class>grupp6.svp.web.servlet.FileServlet</servlet-class>
+    <init-param>
+        <param-name>basePath</param-name>
+        <param-value>\files</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fileServlet</servlet-name>
+    <url-pattern>/files/*</url-pattern>
+  </servlet-mapping>
+  
+<!-- BELOW HERE WE REGISTER SERVLETS -->
+  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>compzki.svp.web.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>compzki.svp.web.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserHomeServlet</servlet-name>
+    <servlet-class>compzki.svp.web.servlet.UserHomeServlet</servlet-class>
+  </servlet>
+  
+  
+  
+</web-app>

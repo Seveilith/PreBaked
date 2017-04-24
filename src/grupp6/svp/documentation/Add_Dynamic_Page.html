@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>How to add a dynamic page!</title>
+<!-- TO CHANGE THE HORRIBLE CSS STYLE IN THE CODE COMMENTS. CHANGE THIS CSS TO ANY NAME IN THE compzki.svp.documentation.js.styles PACKAGE -->
+<link rel="stylesheet" href="js/styles/monokai.css">
+<script src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div>
+	<h1>How to add a dynamic page</h1>
+	<p>
+		First of all, sorry if the syntax highlighting looks a bit funky. The java style didn't work so i had to use javascript. To add a dynamic page in the framework we first need to open the EnumPage enumerate class (In <i>grupp6.svp.web</i> package). First it should look something like this:
+		<pre><code class="javascript">package grupp6.svp.web;
+
+/**
+ *  This enum helps us see what pages exists on this website,
+ *  both static and dynamic. The enum collaborates with the
+ *  PageFactory to guide users between different pages.
+ *  Below you can see links that explain each of the enum values more;
+ *  
+ *  <li>{@link #HOME}</li>
+ *  
+ * @author joncr49
+ *
+ */
+public enum EnumPage {
+	
+	/**
+	 * The home page is a static page; index.jsp
+	 * This is the home page of the website, it is here that everything starts.
+	 */
+	HOME,
+	/**
+	 * The login page is a dynamic page accessed through the LoginServlet.
+	 * The page have two different possibilities to be displayed:
+	 * 
+	 * either the user successfully log in and a page is generated...
+	 * OR	  the user fails to log in and see the login_failed.jsp.
+	 */
+	LOGIN,
+	/**
+	 * LOGOUT is a "page" that for the client is only a redirect, while on the server a reset of session happens.
+	 */
+	LOGOUT,
+	/**
+	 * Page where user important information is displayed. This page is generated
+	 * and will only show if the user is online.
+	 */
+	USER_HOME,
+	//TUTORIAL COMMENT: HERE WE INSERT A NEW PAGE
+}</code></pre> 
+	<p>
+		I will insert the following (at the above comment):
+	</p>
+ 	<pre><code class="javascript">	/**
+	 * Page for testing various things and algorithms and stuff...
+	 */
+	TEST,</code></pre>
+	</p>
+	
+	<p>
+		After this we need to add a servlet you first need to create a class in the <i>grupp6.svp.web.servlet</i> package that implements the <b>HttpServlet</b> class.
+		I choosed to name it TestServlet. Open the class and this should show: <br />
+
+<pre><code class="javascript">package grupp6.svp.web.servlet;
+
+import javax.servlet.http.HttpServlet;
+
+public class TestServlet extends HttpServlet { //TUTORIAL COMMENT: Name will differ between your servlet and mine.
+	
+}</code></pre>
+	</p>
+	
+	<p>
+	In the class we need to auto generate serial version ID. Hold over the name of the class (It should be underlined with yellow) and wait for a menu. In the pop-up click on <b>Add generated serial version ID</b> and you should get a result <b>like</b> this: <br />
+<pre><code class="javascript">package grupp6.svp.web.servlet;
+
+import javax.servlet.http.HttpServlet;
+
+public class TestServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3475736105640247821L; //TUTORIAL COMMENT: This number can differ between generating.
+	
+}</code></pre>
+	</p>
+	<p>
+		After that we need to add some basic methods to make the servlet useful (Constructur, doGet, and doPost). We should also add calls to <i>answer</i> method in PageFactory, with our EnumPage value as the last input. This should be the result:
+<pre><code class="javascript">package grupp6.svp.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class TestServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3475736105640247821L;
+	
+	/**
+     * @see HttpServlet#HttpServlet()
+     */
+    public TestServlet() {
+        super();
+    }
+    
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PageFactory.instance().answer(request, response, EnumPage.TEST);
+	}
+	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PageFactory.instance().answer(request, response, EnumPage.TEST);
+	}
+	
+}</code></pre>
+	</p>
+	<p>
+	Above we have created a basic servlet and it is now time to register it in: WebContent/WEB-INF/web.xml. When opening it the first time it will look like this: <br />
+	<table>
+	<tr>
+	<td>
+<pre><code class="html">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt!-- STANDARD VALUES FOR THIS WEB.XML FILE --&gt;
+&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1"&gt;
+  &lt;display-name&gt;WebApp-1&lt;/display-name&gt;
+  &lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.html&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.htm&lt;/welcome-file&gt;
+    &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;
+  &lt;/welcome-file-list&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;*.css&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;fileServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;grupp6.svp.web.servlet.FileServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;basePath&lt;/param-name&gt;
+        &lt;param-value&gt;\files&lt;/param-value&gt;
+    &lt;/init-param&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;fileServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/files/*&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  
+  &lt!-- BELOW HERE WE REGISTER SERVLETS --&gt;
+  
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;LoginServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;compzki.svp.web.servlet.LoginServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;LogoutServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;compzki.svp.web.servlet.LogoutServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;UserHomeServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;compzki.svp.web.servlet.UserHomeServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  
+  &lt!-- INSERT NEW SERVLER HERE --&gt;
+  
+&lt;/web-app&gt;</code></pre>
+	</td>
+	<td valign="top">
+		<p>This file does contain alot of information. The standard values handles some standard behaviour mentioned in the overview documentation. Most important is all the index.* file mentions. 
+		When someone visits our website (e.g. http://localhost:8080/WebApp-1/) Tomcat will redirect them to any of the index.* files. As we only have the index.js file users will end up there. </p>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<p>
+		The important part for us is below the comment: BELOW HERE WE REGISTER SERVLETS. Here I have registered the starter servlets (LoginServlet, LogoutServlet, and UserHomeServlet). To register our own servlet we just need to insert below the last entry;
+<pre><code class="html">&lt;servlet&gt;
+    &lt;servlet-name&gt;TestServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;compzki.svp.web.servlet.TestServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+</code></pre>
+		</p>
+		<p>
+			Rember to change the name from TestServlet to whatever you named your servlet. Both servlet-name and servlet-class need changes. After we inserted the above code snippet to the end of the web.xml (but above the &lt;/web-app&gt; tag),
+			We need to go back to our class (In my case TestServlet).
+		</p>
+	</td>	
+	<tr>
+	</table>
+	</p>
+	<p>
+		In our Servlet class at the begining 
+		<pre><code class="javascript">public class TestServlet extends HttpServlet {</code></pre> 
+		we need to add an annotation called WebServlet. So it looks like this:
+		<pre><code class="javascript">@WebServlet(name="test", urlPatterns={"/test"})
+public class TestServlet extends HttpServlet {</code></pre>
+		<b>name</b> refer to the name of the servlet, keep it simple and close to the class name. <b>urlPatterns</b> refer to the pattern that Tomcat will check against to see if a path activates this servlet. 
+		It is a first match system, meaning that only one pattern can be triggered (one servlet), the first identified.
+		<p>
+			We can visit the servlet at: http://localhost:8080/WebApp-1/test, but it will only give us a empty screen.
+		</p>
+	</p>
+	<p>
+		As a final part we need to open <b>PageFactory</b> and add out EnumPage to the <i>answer</i> method. Open PageFactory and scrolldown untill you find the answer method, it should look something like this:
+		<pre><code class="javascript">public void answer(HttpServletRequest request, HttpServletResponse response, EnumPage page){
+		//If something go wrong we need to catch it before the thread crashes...
+		try{
+			switch(page){
+			case HOME:
+				response.sendRedirect("index.jsp");
+				break;
+			case LOGIN:
+				String username = request.getParameter("username");
+			    String password = request.getParameter("password");
+			    login(request, response, username, password);
+				break;
+			case LOGOUT:
+				HttpSession session = request.getSession();
+				LogicFacade.logout(session);
+				this.answer(request, response, EnumPage.HOME);
+				break;
+			case USER_HOME:
+				user(request, response);
+				break;
+			//TUTORIAL COMMENT: ADD NEW CASE FOR SERVLET HERE!
+			default:
+				break;
+			}
+		} catch (Exception ex){
+			ex.printStackTrace();
+		}
+	}</code></pre>
+	At the tutorial comment we need to insert the following:
+<pre><code class="javascript">			case TEST:
+				//TODO: ADD SOME METHOD TO HANLDE REQUEST AND RESPONSE. E.g test(request, response);
+				break;</code></pre>
+		Replace the <b>TODO:</b> with a method that will build the webpage response for you. This is the end of this tutorial. Congratulations you have added a dynamic page to the framework. 
+	</p>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
