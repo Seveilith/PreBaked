@@ -1,5 +1,8 @@
 package grupp6.svp.data;
 
+import grupp6.svp.domain.Activity;
+import grupp6.svp.domain.User;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

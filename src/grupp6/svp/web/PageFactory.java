@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import grupp6.svp.data.Activity;
-import grupp6.svp.logic.LogicFacade;
+import grupp6.svp.domain.Activity;
+import grupp6.svp.domain.DomainFacade;
 /**
  * 
  * 
@@ -60,7 +60,7 @@ public class PageFactory {
 				break;
 			case LOGOUT:
 				HttpSession session = request.getSession();
-				LogicFacade.logout(session);
+				DomainFacade.logout(session);
 				this.answer(request, response, EnumPage.HOME);
 				break;
 			case USER_HOME:
@@ -88,7 +88,7 @@ public class PageFactory {
 		HttpSession session = request.getSession();
         String u = (String) session.getAttribute("Username");
 		
-		if(u == null && !LogicFacade.canLogin(username, password)){
+		if(u == null && !DomainFacade.canLogin(username, password)){
 			response.sendRedirect("login_failed.jsp"); //Username & password are incorrect we respond with a redirect to login_failed.jsp
 			return;
 		} else if (u == null) {
@@ -131,7 +131,7 @@ public class PageFactory {
 			response.sendRedirect("login_failed.jsp"); //Some is trying to access a login restricted page without begin logged in, we redirect to login_failed.jsp
 			return;
 		}
-		List<Activity> list = LogicFacade.getActivitites(username);
+		List<Activity> list = DomainFacade.getActivitites(username);
 		
 		response.setContentType("text/html"); //Divider between Logic & Page Building
 		
