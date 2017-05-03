@@ -44,7 +44,7 @@ public class PageFactory {
 	 * 
 	 * @param response
 	 * @param page
-	 * @param parameters
+//	 * @param parameters
 	 */
 	public void answer(HttpServletRequest request, HttpServletResponse response, EnumPage page){
 		//If something go wrong we need to catch it before the thread crashes...
@@ -94,24 +94,15 @@ public class PageFactory {
 		} else if (u == null) {
 	        session.setAttribute("Username", username);
 		}
-		username = (String) session.getAttribute("Username");
-		
-		response.setContentType("text/html"); //Divider between Logic & Page Building
-		
-		PrintWriter output = response.getWriter();
-		ElementBuilder.addHead(output, "Title - You are logged in!");
-		ElementBuilder.addHeader(request, response);
-		
-		output.append("<div class=\"mainContainer\">");
-		
-		//ADD CONTENT HERE! :) Some example on in log page;
-		ElementBuilder.addLeftPanel(output, ElementBuilder.getMenu());
-		ElementBuilder.addCenterPanel(output, "<h1> Welcome " + username + "!</h1>" + "<p>" + ElementBuilder.getRandomLatin() + "</p>");
-		
-		output.append("</div>");
-		
-		ElementBuilder.addFooter(request, response);
-		ElementBuilder.addEnd(output);
+
+		if(username.indexOf('@') >= 0){
+			response.sendRedirect("customer.jsp");
+		}else if(username.charAt(5) == 0){
+			response.sendRedirect("admin.jsp");
+		}else if(username.charAt(5) == 1){
+			response.sendRedirect("designer.jsp");
+		}
+		response.sendRedirect("index.jsp");
 	}
 	
 	
