@@ -15,22 +15,16 @@
 
 <!--MAIN CONTAINER-->
 <div class="mainContainer">
-	<div class="leftPanel">
-		<div class="loginForm">
-			<form action="login" method="post">
-				<table>
-					<tr><td><b>Username:</b></td><td><input type="text" name="username" style="width: 160px; "/></td></tr>
-					<tr><td><b>Password:</b></td><td><input type="password" name="password" style="width: 160px; "/></td></tr>
-					<tr><td></td><td><b>Login failed!</b></td></tr>
-					<tr><td><input type="submit" value="Send" /></td></tr>
-				</table>
-			</form>
-		</div>
-	</div>
-	
-	<div class="centerPanel">
-		<h1> Welcome to SAM-DIG SERVICE! :) </h1>
-		<p> This is a service framework for you to use. Have fun!</p>
+
+	<h1>Inloggning misslyckades!</h1>
+	<div id="returnButton">
+		<form action="login.jsp">
+			<input type="submit" value="Försök igen" />
+		</form>
+		<form action="index.jsp">
+			<input type="submit" value="Återvänd till startsida" />
+		</form>
+		<ul></ul>
 	</div>
 	
 </div>

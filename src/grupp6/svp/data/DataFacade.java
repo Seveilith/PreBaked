@@ -44,6 +44,7 @@ public class DataFacade {
 	private static HashMap<String, User> users = new HashMap<String, User>();
 	static { //Add, remove, or edit Users for the system here
 		new User("Test", "Test");
+		new User("Admin01", "Test");
 		new User("Kund1@gmail.com", "Test");
 		new User("Kund2@gmail.com", "Test");
 		new User("Desig11", "Test");
