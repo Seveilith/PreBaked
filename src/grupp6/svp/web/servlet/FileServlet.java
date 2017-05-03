@@ -38,6 +38,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Servlets är vår controllers
+ */
+
+/**
  * A file servlet supporting resume of downloads and client-side caching and GZIP of text content.
  * This servlet can also be used for images, client-side caching would become more efficient.
  * This servlet can also be used for text files, GZIP would decrease network bandwidth.
