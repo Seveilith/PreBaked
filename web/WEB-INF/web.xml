@@ -9,6 +9,8 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
+
+
   </welcome-file-list>
   <servlet-mapping>
     <servlet-name>default</servlet-name>
@@ -23,7 +25,7 @@
     <servlet-class>grupp6.svp.web.servlet.FileServlet</servlet-class>
     <init-param>
         <param-name>basePath</param-name>
-        <param-value>\files</param-value>
+        <param-value>/files</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
@@ -35,15 +37,15 @@
   
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>compzki.svp.web.servlet.LoginServlet</servlet-class>
+    <servlet-class>grupp6.svp.web.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>compzki.svp.web.servlet.LogoutServlet</servlet-class>
+    <servlet-class>grupp6.svp.web.servlet.LogoutServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UserHomeServlet</servlet-name>
-    <servlet-class>compzki.svp.web.servlet.UserHomeServlet</servlet-class>
+    <servlet-class>grupp6.svp.web.servlet.UserHomeServlet</servlet-class>
   </servlet>
   
   
