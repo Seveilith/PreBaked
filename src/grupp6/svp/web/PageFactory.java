@@ -97,9 +97,9 @@ public class PageFactory {
 
 		if(username.indexOf('@') >= 0){
 			response.sendRedirect("customer.jsp");
-		}else if(username.charAt(5) == 0){
+		}else if(username.charAt(5) == '0'){
 			response.sendRedirect("admin.jsp");
-		}else if(username.charAt(5) == 1){
+		}else if(username.charAt(5) == '1'){
 			response.sendRedirect("designer.jsp");
 		}
 		response.sendRedirect("index.jsp");
