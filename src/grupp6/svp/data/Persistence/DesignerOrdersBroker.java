@@ -1,5 +1,7 @@
 package grupp6.svp.data.Persistence;
 
+import java.util.UUID;
+
 /**
  * Created by alo on 2017-05-08.
  */
@@ -25,11 +27,16 @@ public class DesignerOrdersBroker extends Broker {
     @Override
     public void getAllFromStorage(Object[] object) {}
 
+    @Override
+    public Object getFromStorage(UUID id) {
+        return null;
+    }
+
     //@Override
     //public void getFromStorage(Objectidentifier id) {}
 
     @Override
-    public void getFromStorage(Object object) {}
+    //public void getFromStorage(Object object) {}
 
     @Override
     public void updateStorage(Object object) {}

@@ -1,12 +1,13 @@
 package grupp6.svp.data;
 
-import grupp6.svp.domain.Activity;
-import grupp6.svp.domain.User;
+import grupp6.svp.domain.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+
 
 /** 
 *	=== DATA FACADE === 
@@ -37,7 +38,23 @@ import java.util.Random;
 *
 **/
 public class DataFacade {
-	
+
+//	public static Product getProduct(int productId){
+//		return
+//	}
+
+//	public static void register(User user) {
+//		users.put(user.username, user);
+//	}
+//
+//
+//	public static User getUser(String username){
+//		return users.get(username);
+//	}
+
+
+
+
 	/** === USERS ===
 	 * This part of the facade handles construction of ghost users
 	**/
