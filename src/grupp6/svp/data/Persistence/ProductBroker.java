@@ -43,23 +43,6 @@ public class ProductBroker extends Broker {
             ex.printStackTrace();
         }
     }
-    @Override
-    public void insert(Object object) {
-
-
-    }
-
-    @Override
-    public void findAll(Object[] object) {}
-
-    @Override
-    public void find(Object object) {}
-
-    @Override
-    public void update(Object object) {}
-
-    @Override
-    public void delete(Object object) {}
 
     @Override
     public void insertStorage(Object object) {}
@@ -75,7 +58,7 @@ public class ProductBroker extends Broker {
     //@Override
     //public void getFromStorage(Objectidentifier id) {}
 
-    @Override
+    //@Override
     //public void getFromStorage(Object object) {}
 
     @Override
