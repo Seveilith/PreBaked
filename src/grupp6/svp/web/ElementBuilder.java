@@ -72,15 +72,15 @@ public class ElementBuilder {
 	 */
 	public static String getRandomLatin() {
 		String latin = "";
-		
+
 		latin += "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed euismod nunc, sit amet suscipit orci. Nam at enim tincidunt, consectetur dui sed, molestie risus. Sed et nisi in velit aliquet posuere. Nulla facilisi. Vivamus suscipit vehicula purus vitae ullamcorper. Aliquam erat volutpat. Vestibulum pharetra, nulla eget luctus facilisis, dolor odio pretium nisi, id suscipit magna magna at tortor.</p>";
 
 		latin += "<p>Proin rutrum lectus nec rutrum scelerisque. Suspendisse potenti. Sed egestas mi et elit eleifend dignissim. Curabitur nec commodo erat. Integer ullamcorper, purus quis euismod faucibus, lacus mauris facilisis velit, et congue justo augue non neque. Phasellus laoreet dignissim velit in dapibus. Vestibulum vel sodales lacus. Aenean facilisis pellentesque libero ac vulputate</p>";
-		
+
 		latin += "<p>Ut sit amet magna aliquet, vestibulum lorem sit amet, ullamcorper orci. Donec convallis aliquet orci, nec ullamcorper lectus egestas vel. Cras imperdiet odio a purus luctus, nec efficitur nulla elementum. Nunc vitae facilisis metus. Vestibulum iaculis eget nisl quis tempus. Nullam aliquam et ligula ac suscipit. Nullam quis aliquet eros, vel tristique diam. Quisque sed sem non ex tincidunt gravida. Donec non nisl sit amet neque molestie porttitor non ac metus. Integer non faucibus dui. Praesent libero arcu, vulputate quis est vel, elementum consequat leo. Donec consectetur tincidunt libero in accumsan.</p>";
-		
+
 		latin += "<p>Quisque fringilla, risus quis volutpat pharetra, purus diam suscipit erat, sit amet consequat nisi augue eget leo. Sed dictum risus purus, vitae vulputate turpis congue eget.</p>";
-		
+
 		return latin;
 	}
 	

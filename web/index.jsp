@@ -2,12 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!--<title>Welcome to SamDiG!</title>-->
-<link rel='stylesheet' type='text/css' href='./files/css/style.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-</head>
+
 <body>
 
 <!--HEADER-->
@@ -15,6 +14,9 @@
 
 <!--MAIN CONTAINER-->
 <div class="mainContainer">
+
+
+
 	<div class="leftPanel">
 
 
@@ -35,15 +37,27 @@
 			<ul></ul>
 		</div>
 
-		<div id="productList">
-			<li><a href="#" class="">Paket</a></li>
-			<li><a href="#" class="">Tillbehör</a></li>
-			<li><a href="#" class="">Enheter</a></li>
-			<li><a href="#" class="">Övrigt</a></li>
-		</div>
 
 
 	</div>
+
+	<!-- Sidebar -->
+	<div class="w3-sidebar w3-bar-block w3-light-grey w3-card-2" style="width:30%">
+		<a href="#" class="w3-bar-item w3-button">Paket</a>
+		<a href="#" class="w3-bar-item w3-button">Enheter</a>
+		<div class="w3-dropdown-hover">
+			<button class="w3-button">Paket
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="w3-dropdown-content w3-bar-block">
+				<a href="#" class="w3-bar-item w3-button">Mediapack</a>
+				<a href="#" class="w3-bar-item w3-button">Cloudpack</a>
+			</div>
+		</div>
+		<a href="#" class="w3-bar-item w3-button">Link 3</a>
+	</div>
+
+	<div style="margin-left:30%">
 	
 	<div class="centerPanel">
 		<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra turpis lacus, ut fringilla massa luctus nec. Ut quis dui nec ipsum tristique dictum. Nulla non maximus quam. Nullam condimentum convallis dolor, a molestie sem semper sit amet. Nulla eleifend dolor sit amet orci hendrerit varius. Praesent mollis consequat ex a elementum. Aenean aliquet ipsum et scelerisque mattis. Sed diam orci, rutrum non nulla in, tempus commodo sem. Donec rutrum in felis eu placerat. Donec dapibus sem nec nulla facilisis eleifend. Pellentesque eu faucibus lorem, vel pretium leo.</p>
