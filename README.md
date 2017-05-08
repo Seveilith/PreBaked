@@ -1,5 +1,5 @@
 # Pre-baked
-Stable branch. 
+Carls speciella branch. 
 
 ## Gruppmedlemmar
 * Carl Brännström - carbr425@student.liu.se
