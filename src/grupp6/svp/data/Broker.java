@@ -14,4 +14,17 @@ public abstract class Broker {
     public void update(Object object){}
 
     public void delete(Object object){}
+
+    public abstract void insertStorage();
+
+    public abstract void getAllFromStorage();
+
+    public abstract void getFromStorage(); //id: ObjectIdentifier
+
+    // public abstract void getFromStorage(); //object: Object
+
+    public abstract void updateStorage();
+
+    public abstract void deleteStorage();
+
 }
