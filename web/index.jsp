@@ -60,13 +60,15 @@
 			<form action="/basket">
 				<tr><td>Veggie Delight</td><td>$40</td><td>
 					<input type="hidden" name="name" value="Veggie Delight">
-					<input type="hidden" name="price" value="40"><input type="submit" value="Add to cart"></td>
+					<input type="hidden" name="price" value="40">
+					<input type="submit" value="Add to cart"></td>
 				</tr>
 			</form>
 			<form action="grupp6.svp.web.servlet.BasketServlet.java">
 				<tr><td>Margherita</td><td>$10</td><td>
 					<input type="hidden" name="name" value="margherita">
-					<input type="hidden" name="price" value="10"><input type="submit" value="Add to cart"></td>
+					<input type="hidden" name="price" value="10">
+					<input type="submit" value="Add to cart"></td>
 				</tr>
 
 			</form>

@@ -1,6 +1,10 @@
 package grupp6.svp.data.Persistence;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -21,6 +25,13 @@ public abstract class Broker {
         Object obj = this.getFromStorage(id);
         cache.put(id,obj);
         return obj;
+    }
+
+    //Lade till denna metod efter att lagt till PFacade och find-koden i datafacade enligt crusoes slides 9 maj//Malin
+    public List<DataTransferObject> find(DataTransferObject data){
+        List<DataTransferObject> list = new ArrayList<>();
+
+        return list;
     }
 
     public void update(Object object){}

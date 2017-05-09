@@ -1,5 +1,8 @@
 package grupp6.svp.data;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+import grupp6.svp.data.DataTransferObjects.ProductData;
+import grupp6.svp.data.Persistence.PFacade;
 import grupp6.svp.domain.*;
 
 import java.util.ArrayList;
@@ -52,6 +55,19 @@ public class DataFacade {
 //		return users.get(username);
 //	}
 
+	protected PFacade per;
+
+	public void register(){}
+
+	public List<ProductData> find(ProductData product){
+		List<ProductData> result = new ArrayList<>();
+		List<DataTransferObject> list = per.find(product);
+
+		for (DataTransferObject dto : list) {
+			result.add((ProductData) dto);
+		}
+		return result;
+	}
 
 
 

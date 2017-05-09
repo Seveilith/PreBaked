@@ -18,7 +18,8 @@ import grupp6.svp.web.PageFactory;
  */
 @WebServlet(name="basket", urlPatterns={"/basket"})
 public class BasketServlet extends HttpServlet {
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
