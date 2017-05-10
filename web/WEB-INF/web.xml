@@ -47,6 +47,13 @@
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>grupp6.svp.web.servlet.LogoutServlet</servlet-class>
   </servlet>
+
+  <servlet>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>grupp6.svp.web.servlet.ProductServlet</servlet-class>
+  </servlet>
+
+
   <servlet>
     <servlet-name>UserHomeServlet</servlet-name>
     <servlet-class>grupp6.svp.web.servlet.UserHomeServlet</servlet-class>
