@@ -1,5 +1,8 @@
 package grupp6.svp.data;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+import grupp6.svp.data.DataTransferObjects.ProductData;
+import grupp6.svp.data.Persistence.PFacade;
 import grupp6.svp.domain.*;
 
 import java.util.ArrayList;
@@ -9,34 +12,6 @@ import java.util.Random;
 
 
 
-/** 
-*	=== DATA FACADE === 
-*	A.k.a. Ghost Facade
-*
-*	Mimics the reactions of a database. It is like an actor,
-*	playing to be something, while not being it. Helps us develop
-*	products without having to have everything finished.
-*	
-*	== DATA OBJECTS ==
-*	As the data facade is a ghost it holds "ghost objects", to ease development;
-*		- every ghost object must be unique.
-*		- every ghost object must be self installing into the interface 
-*			(Call a register function in their constructor. The User class is a good example.). 
-*		- every ghost object must have useful values
-*		- every ghost object is assumed to hold correct data
-*
-*
-*	P.S. This code is just made to work and is therefore prone to bugs, chaos and crashes. :)
-*		 Bug fixing and changes to data is encouraged!
-*
-*	== SECTIONS ==
-*	To ease development this class is divided into sections. Each sections handles one kind of ghost object.
-*	These are the following sections that exists;
-*
-*	- Users: Handles any information about users...
-*
-*
-**/
 public class DataFacade {
 
 //	public static Product getProduct(int productId){
@@ -52,6 +27,19 @@ public class DataFacade {
 //		return users.get(username);
 //	}
 
+	protected PFacade per;
+
+	public void register(){}
+
+	public List<ProductData> find(ProductData product){
+		List<ProductData> result = new ArrayList<>();
+		List<DataTransferObject> list = per.find(product);
+
+		for (DataTransferObject dto : list) {
+			result.add((ProductData) dto);
+		}
+		return result;
+	}
 
 
 
