@@ -12,34 +12,6 @@ import java.util.Random;
 
 
 
-/** 
-*	=== DATA FACADE === 
-*	A.k.a. Ghost Facade
-*
-*	Mimics the reactions of a database. It is like an actor,
-*	playing to be something, while not being it. Helps us develop
-*	products without having to have everything finished.
-*	
-*	== DATA OBJECTS ==
-*	As the data facade is a ghost it holds "ghost objects", to ease development;
-*		- every ghost object must be unique.
-*		- every ghost object must be self installing into the interface 
-*			(Call a register function in their constructor. The User class is a good example.). 
-*		- every ghost object must have useful values
-*		- every ghost object is assumed to hold correct data
-*
-*
-*	P.S. This code is just made to work and is therefore prone to bugs, chaos and crashes. :)
-*		 Bug fixing and changes to data is encouraged!
-*
-*	== SECTIONS ==
-*	To ease development this class is divided into sections. Each sections handles one kind of ghost object.
-*	These are the following sections that exists;
-*
-*	- Users: Handles any information about users...
-*
-*
-**/
 public class DataFacade {
 
 //	public static Product getProduct(int productId){
@@ -91,6 +63,7 @@ public class DataFacade {
 	 */
 	public static void register(User user) {
 		users.put(user.username, user);
+
 	}
 	
 	/**
@@ -99,9 +72,7 @@ public class DataFacade {
 	 * @param username	the username of a specifc user.
 	 * @return 			returns a user object identifed from the username inserted, if the user dosn't exist null is returned.
 	 */
-	public static User getUser(String username){
-		return users.get(username);
-	}
+	public static User getUser(String username){return users.get(username);}
 	
 	/** === ACTIVITY ===
 	 * This part of the facade handles construction of ghost activities
