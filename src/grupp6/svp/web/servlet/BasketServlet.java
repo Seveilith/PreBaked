@@ -16,19 +16,55 @@ import grupp6.svp.web.PageFactory;
 /**
  * Created by LinnPettersson on 2017-05-03.
  */
-@WebServlet(name="Basket", urlPatterns={"/Basket"})
+@WebServlet(name="basket", urlPatterns={"/basket"})
 public class BasketServlet extends HttpServlet {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        Basket shoppingBasket;
 
-    public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-        String str = req.getParameter("in");
 
-        PrintWriter out = res.getWriter();
-        out.println(str);
+        shoppingBasket = (Basket) session.getAttribute("basket");
+        if(shoppingBasket == null){
+            shoppingBasket = new Basket();
+            session.setAttribute("basket", shoppingBasket);
+        }
+        String name = request.getParameter("name");
+        Integer price = Integer.parseInt(request.getParameter("price"));
+        shoppingBasket.addToBasket(name, price);
+        session.setAttribute("basket", shoppingBasket);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>result</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Pizza successfully added to cart </h1>");
+            out.println("<form action='index.html'>Add more pizza item<input type='submit' value='go'></form>");
+            out.println("<hr>");
+            out.println("<h2>Cart</h2>");
+            HashMap<String, Integer> items = shoppingBasket.getBasketItems();
+            out.println("<table border='1px'>");
 
-        String str2 = req.getParameter("mar");
+            for(String key: items.keySet()){
+                out.println("<tr><td>"+key+" - </td><td>"+"$"+items.get(key)+"</td></tr>");
+            }
+            out.println("<table>");
+            out.println("</body>");
+            out.println("</html>");
 
-        PrintWriter out2 = res.getWriter();
-        out.println(str2);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void main(String[] args){
+        BasketServlet bs = new BasketServlet();
+        System.out.println(bs.getServletName());
     }
 }

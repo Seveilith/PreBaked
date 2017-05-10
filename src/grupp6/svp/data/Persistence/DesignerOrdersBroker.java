@@ -1,5 +1,7 @@
 package grupp6.svp.data.Persistence;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
 import java.util.UUID;
 
 /**
@@ -9,29 +11,22 @@ public class DesignerOrdersBroker extends Broker {
 
 
     @Override
-    public void insertStorage(Object object) {}
+    public void insert(DataTransferObject object) {
+
+    }
 
     @Override
-    public void getAllFromStorage(Object[] object) {}
+    public void update(DataTransferObject object) {
+
+    }
+
+    @Override
+    public void delete(DataTransferObject object) {
+
+    }
 
     @Override
     public Object getFromStorage(UUID id) {
         return null;
     }
-
-    @Override
-    public void updateStorage(Object object) {
-
-    }
-
-    //@Override
-    //public void getFromStorage(Objectidentifier id) {}
-
-   // @Override
-    //public void getFromStorage(Object object) {}
-
-
-
-    @Override
-    public void deleteStorage(Object object) {}
 }
