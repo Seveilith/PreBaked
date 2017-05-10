@@ -1,41 +1,35 @@
 package grupp6.svp.domain;
 
+import grupp6.svp.data.DataTransferObjects.AdminData;
+
 /**
  * Created by malinvagnborg on 2017-05-08.
  */
 public class Admin {
 
-    private int AdminID;
-    private String AdminFirstName;
-    private String AdminLastName;
-    private String AdminMail;
-    private String AdminPassword;
+    private AdminData data;
 
-    public Admin(int AdminID, String AdminFirstName, String AdminLastName, String AdminMail, String AdminPassword){
-        this.AdminID = AdminID;
-        this.AdminFirstName = AdminFirstName;
-        this.AdminLastName = AdminLastName;
-        this.AdminMail = AdminMail;
-        this.AdminPassword = AdminPassword;
+    public Admin(){
+        data = new AdminData();
     }
 
     public int getAdminID() {
-        return AdminID;
+        return data.getAdminID();
     }
 
     public String getAdminFirstName() {
-        return AdminFirstName;
+        return data.getAdminFirstName();
     }
 
     public String getAdminLastName() {
-        return AdminLastName;
+        return data.getAdminLastName();
     }
 
     public String getAdminMail() {
-        return AdminMail;
+        return data.getAdminMail();
     }
 
     public String getAdminPassword() {
-        return AdminPassword;
+        return data.getAdminPassword();
     }
 }

@@ -75,6 +75,7 @@ public class DataFacade {
 	 */
 	public static void register(User user) {
 		users.put(user.username, user);
+
 	}
 	
 	/**
@@ -83,9 +84,7 @@ public class DataFacade {
 	 * @param username	the username of a specifc user.
 	 * @return 			returns a user object identifed from the username inserted, if the user dosn't exist null is returned.
 	 */
-	public static User getUser(String username){
-		return users.get(username);
-	}
+	public static User getUser(String username){return users.get(username);}
 	
 	/** === ACTIVITY ===
 	 * This part of the facade handles construction of ghost activities

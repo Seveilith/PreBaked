@@ -33,16 +33,9 @@
     <url-pattern>/files/*</url-pattern>
   </servlet-mapping>
 
-<!--
-  <servlet>
-    <servlet-name>BasketServlet</servlet-name>
-    <servlet-class>grupp6.svp.web.servlet.BasketServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BasketServlet</servlet-name>
-    <url-pattern>/basket/</url-pattern>
-  </servlet-mapping>
--->
+
+
+
 
   <!-- BELOW HERE WE REGISTER SERVLETS -->
   
@@ -58,7 +51,8 @@
     <servlet-name>UserHomeServlet</servlet-name>
     <servlet-class>grupp6.svp.web.servlet.UserHomeServlet</servlet-class>
   </servlet>
-  
-  
-  
+    <servlet>
+        <servlet-name>BasketServlet</servlet-name>
+        <servlet-class>grupp6.svp.web.servlet.BasketServlet</servlet-class>
+    </servlet>
 </web-app>

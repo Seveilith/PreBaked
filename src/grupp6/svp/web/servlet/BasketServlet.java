@@ -23,6 +23,9 @@ public class BasketServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         Basket shoppingBasket;
+
+
+
         shoppingBasket = (Basket) session.getAttribute("basket");
         if(shoppingBasket == null){
             shoppingBasket = new Basket();
@@ -54,6 +57,14 @@ public class BasketServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
 
+        }catch(Exception e){
+            e.printStackTrace();
         }
+
+    }
+
+    public static void main(String[] args){
+        BasketServlet bs = new BasketServlet();
+        System.out.println(bs.getServletName());
     }
 }

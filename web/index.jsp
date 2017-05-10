@@ -50,7 +50,7 @@
 		<p> Vivamus neque diam, finibus in convallis id, iaculis ac nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam quis elementum est. Nullam quis pellentesque massa, ac gravida metus. Donec dignissim purus mauris, quis eleifend ante hendrerit eu. Aliquam efficitur arcu magna, non efficitur ex tempus ac. Praesent sit amet metus a felis rutrum pellentesque. Quisque in facilisis magna. Ut risus justo, finibus non nulla et, efficitur luctus lectus. Nulla ac laoreet nisi. Cras id est urna. Suspendisse ut tempus augue. Nulla porta risus et ultrices egestas. Fusce volutpat, turpis sit amet iaculis feugiat, dui ligula eleifend velit, eget dictum ligula quam at nulla. Suspendisse odio turpis, luctus ac nisl sed, cursus aliquet est.</p>
 
 		<table border="1px">
-			<form action="localhost:8080/PreBaked/src/grupp6.svp/web/servlet/basket" method="post">
+			<form action="BasketServlet" method="post">
 
 				<th>Pizza Name</th> <th>Price</th>  <th>Add to Cart</th>
 				<tr><td>Muffuleta</td><td>$20</td><td><input type="hidden" name="name" value="Muffuleta">
