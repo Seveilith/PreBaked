@@ -16,9 +16,15 @@ public class Product {
 
     private int productQuantity;
 
-    public int getProductId() {
-        return productId;
+    public Product(int productId, String productName, String productDescription, int productPrice, int productQuantity){
+        this.productId = productId;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.productPrice = productPrice;
+        this.productQuantity = productQuantity;
     }
+
+    public int getProductId(){return productId;}
 
     public String getProductName() {
         return productName;
