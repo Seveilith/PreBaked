@@ -18,53 +18,32 @@ import grupp6.svp.web.PageFactory;
  */
 @WebServlet(name="basket", urlPatterns={"/basket"})
 public class BasketServlet extends HttpServlet {
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Basket shoppingBasket;
+        // Set response content type
+        response.setContentType("text/html");
 
+        PrintWriter out = response.getWriter();
+        String title = "Using GET Method to Read Form Data";
 
+        String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " +
+                "transitional//en\">\n";
 
-        shoppingBasket = (Basket) session.getAttribute("basket");
-        if(shoppingBasket == null){
-            shoppingBasket = new Basket();
-            session.setAttribute("basket", shoppingBasket);
-        }
-        String name = request.getParameter("name");
-        Integer price = Integer.parseInt(request.getParameter("price"));
-        shoppingBasket.addToBasket(name, price);
-        session.setAttribute("basket", shoppingBasket);
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>result</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Pizza successfully added to cart </h1>");
-            out.println("<form action='index.html'>Add more pizza item<input type='submit' value='go'></form>");
-            out.println("<hr>");
-            out.println("<h2>Cart</h2>");
-            HashMap<String, Integer> items = shoppingBasket.getBasketItems();
-            out.println("<table border='1px'>");
+        out.println(docType + "<html>\n" +
+                "<head><title>" + title + "</title></head>\n" +
+                "<body bgcolor=\"#f0f0f0\">\n" +
+                "<h1 align=\"center\">" + title + "</h1>\n" +
+                "<ul>\n" +
+                "  <li><b>Id</b>: "
+                + request.getParameter("balloon_Id") + "\n" +
+                "  <li><b>Färg</b>: "
+                + request.getParameter("balloon_col") + "\n" +
+                "</ul>\n" +
+                "</body></html>");
 
-            for(String key: items.keySet()){
-                out.println("<tr><td>"+key+" - </td><td>"+"$"+items.get(key)+"</td></tr>");
-            }
-            out.println("<table>");
-            out.println("</body>");
-            out.println("</html>");
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        DomainFacade.instance().createBalloon(request.getParameter("balloon_Id"), request.getParameter("balloon_col"));
 
     }
 
-    public static void main(String[] args){
-        BasketServlet bs = new BasketServlet();
-        System.out.println(bs.getServletName());
-    }
 }

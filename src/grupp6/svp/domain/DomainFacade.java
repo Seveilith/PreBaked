@@ -15,12 +15,30 @@ import grupp6.svp.data.DataFacade;
  */
 public class DomainFacade {
 
+	private static DomainFacade instance = null;
+
+	/**
+	 *
+	 * @return
+	 */
+	public static DomainFacade instance(){
+		if(instance == null)
+			instance = new DomainFacade();
+		return instance;
+	}
+
+
 	public static boolean canLogin(String username, String password) {
 		User user = DataFacade.getUser(username);
 		if(user == null)
 			return false;
 		
 		return user.username.equals(username) && user.password.equals(password);
+	}
+
+	//Har försökt kommunicera med basketservlet och genom den kalla pa dfacaden som skapar en ballong //Malin
+	public static void createBalloon(String balloonId, String balloonColour){
+		Balloon tmp = new Balloon(balloonId, balloonColour);
 	}
 
 	public static List<Activity> getActivitites(String username) {
