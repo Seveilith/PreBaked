@@ -25,19 +25,7 @@ public abstract class Broker {
 
     public abstract void insert(DataTransferObject object);
 
-    public abstract List<DataTransferObject> find(DataTransferObject obj);/*{
-        if (cache.containsKey(obj.getId()))
-            //return cache.get(obj.getId());
-
-        //DataTransferObject temp = new DataTransferObject();
-
-       // temp.getFromStorage(obj.getId(), dbCon.getConnection())); //OCH CONNECTIOn
-        //cache.put(temp.getId(), obj);
-
-        System.out.println("TESTING TESTING");
-
-        return null;
-    }*/
+    public abstract List<DataTransferObject> find(DataTransferObject obj);
 
     public abstract void update(DataTransferObject object);
 

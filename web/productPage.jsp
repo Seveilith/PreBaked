@@ -14,7 +14,7 @@
 
 <form action="product">
     ID:<br>
-    <input type="text" name="id" value="test">
+    <input type="text" name="id" value="1">
     <br><br>
     <input type="submit" value="Submit">
 </form>

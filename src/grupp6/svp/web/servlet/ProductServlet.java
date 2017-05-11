@@ -38,8 +38,6 @@ public class ProductServlet extends HttpServlet {
         data.setProductId(Integer.parseInt(request.getParameter("id")));
 
         DataFacade.instance().find(data);
-        System.out.println("ProductSERVLET");
-
     }
 
     /**

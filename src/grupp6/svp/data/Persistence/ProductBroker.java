@@ -34,8 +34,6 @@ public class ProductBroker extends Broker {
 
     @Override
     public List<DataTransferObject> find(DataTransferObject obj){
-
-        System.out.println("I PRODUCTBROKER");
         List<DataTransferObject> temp = new ArrayList<>();
         if (cache.containsKey(obj.getId())) {
             temp.add((DataTransferObject) cache.get(obj.getId()));
@@ -67,8 +65,6 @@ public class ProductBroker extends Broker {
                 productData.setProductDescription(rs.getString("ProductDescription"));
                 productData.setProductPrice(rs.getInt("ProductPrice"));
                 productData.setProductQuantity(rs.getInt("ProductQuantity"));
-
-                System.out.println(productData.getProductDescription());
             }
 
             dbCon.returnConnection(con);

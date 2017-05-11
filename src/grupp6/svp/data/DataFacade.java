@@ -9,6 +9,8 @@ import java.util.Random;
 
 import grupp6.svp.data.Persistence.*;
 
+import javax.xml.crypto.Data;
+
 public class DataFacade {
 
 //	public static Product getProduct(int productId){
@@ -31,8 +33,10 @@ public class DataFacade {
 	 * @return
 	 */
 	public static DataFacade instance(){
+
 		if(instance == null)
 			instance = new DataFacade();
+		instance.register();
 		return instance;
 	}
 
@@ -52,11 +56,10 @@ public class DataFacade {
 	}
 
 	public List<DataTransferObject> find(DataTransferObject dto){
-		List<DataTransferObject> result = new ArrayList<>();
-		result = per.find(dto);
-		System.out.println("DataFacade");
-		return result;
 
+        List<DataTransferObject> result = per.find(dto);
+
+		return result;
 	}
 
 
