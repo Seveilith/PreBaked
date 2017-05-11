@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -11,7 +11,24 @@
 <body>
 
 <!--HEADER-->
-<%@ include file="header.jsp" %>
+<header class="site-header" id="masthead">
+	<nav class="nav container">
+		<ul class="nav__menu" id="nav-primary">
+			<li class="nav__menu-item home">
+				<a class="nav__menu-link page-link" href="./" rel="index"><img class="loga " src="files/img/logo.png" alt="Loga"></a>
+			</li>
+			<li class="nav__menu-item">
+				<a class="nav__menu-link page-link" href="productPage.jsp" title="Produkter">Produkter</a>
+			</li>
+			<li class="nav__menu-item">
+				<a class="nav__menu-link page-link" href="basket.jsp" title="Varukorg">Varukorg</a>
+			</li>
+			<li class="nav__menu-item">
+				<a class="nav__menu-link page-link" href="login.jsp" title="Logga in">Logga in</a>
+			</li>
+		</ul>
+	</nav>
+</header>
 
 <!--MAIN CONTAINER-->
 <div class="mainContainer">
