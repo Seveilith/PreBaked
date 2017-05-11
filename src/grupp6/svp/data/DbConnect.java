@@ -23,6 +23,7 @@ public class DbConnect {
         if (con == null)
             try {
                 con = DriverManager.getConnection(MYSQL_URL,"pgiei02","w3baU9tfF6,I");
+                System.out.println("Connected to db...");
                 return con;
             } catch (SQLException e) {
                 e.printStackTrace();
