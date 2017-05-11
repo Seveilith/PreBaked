@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 public abstract class Broker {
 
-    private HashMap<Integer, Object> cache = new HashMap<Integer,Object>();
+    protected HashMap<Integer, Object> cache = new HashMap<Integer,Object>();
 
     protected DbConnect dbCon;
 
@@ -25,7 +25,7 @@ public abstract class Broker {
 
     public abstract void insert(DataTransferObject object);
 
-    public List<DataTransferObject> find(DataTransferObject obj){
+    public abstract List<DataTransferObject> find(DataTransferObject obj);/*{
         if (cache.containsKey(obj.getId()))
             //return cache.get(obj.getId());
 
@@ -37,13 +37,13 @@ public abstract class Broker {
         System.out.println("TESTING TESTING");
 
         return null;
-    }
+    }*/
 
     public abstract void update(DataTransferObject object);
 
     public abstract void delete(DataTransferObject object);
 
-    public abstract Object getFromStorage(int id, Connection con); //id: ObjectIdentifier
+    public abstract DataTransferObject getFromStorage(int id, Connection con); //id: ObjectIdentifier
 
 
 }

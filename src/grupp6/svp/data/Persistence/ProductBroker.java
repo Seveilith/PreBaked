@@ -6,7 +6,9 @@ import grupp6.svp.data.DbConnect;
 import sun.security.util.ObjectIdentifier;
 import grupp6.svp.domain.*;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,15 +32,26 @@ public class ProductBroker extends Broker {
 
     }
 
-    public List<DataTransferObject> find(ProductData obj){
+    @Override
+    public List<DataTransferObject> find(DataTransferObject obj){
 
         System.out.println("I PRODUCTBROKER");
+        List<DataTransferObject> temp = new ArrayList<>();
+        if (cache.containsKey(obj.getId())) {
+            temp.add((DataTransferObject) cache.get(obj.getId()));
+            return temp;
+        }
 
-        return null;
+        temp.add(getFromStorage(obj.getId(), dbCon.getConnection())); //OCH CONNECTIOn
+        cache.put(obj.getId(), obj);
+
+        return temp;
     }
 
+
+
     @Override
-    public Object getFromStorage(int id, Connection con) {
+    public DataTransferObject getFromStorage(int id, Connection con) {
         ProductData productData = new ProductData();
 
         String sqlSelect = "SELECT * FROM pgiei02.Product WHERE ProductID = ?";

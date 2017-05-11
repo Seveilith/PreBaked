@@ -52,8 +52,11 @@ public class DataFacade {
 	}
 
 	public List<DataTransferObject> find(DataTransferObject dto){
-		List<DataTransferObject> result = per.find(dto);
+		List<DataTransferObject> result = new ArrayList<>();
+		result = per.find(dto);
+		System.out.println("DataFacade");
 		return result;
+
 	}
 
 

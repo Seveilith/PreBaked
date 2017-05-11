@@ -14,6 +14,7 @@ public class PFacade {
 
     public List<DataTransferObject> find(DataTransferObject data){
         Broker broker = brokers.get(data.getClass());
+        System.out.println("PFACADE");
         return broker.find(data);
     }
 }
