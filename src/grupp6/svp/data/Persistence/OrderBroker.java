@@ -3,6 +3,7 @@ package grupp6.svp.data.Persistence;
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 
 import java.sql.Connection;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -27,7 +28,12 @@ public class OrderBroker extends Broker {
     }
 
     @Override
-    public Object getFromStorage(int id, Connection con) {
+    public List<DataTransferObject> find(DataTransferObject obj) {
+        return null;
+    }
+
+    @Override
+    public DataTransferObject getFromStorage(int id, Connection con) {
         return null;
     }
 

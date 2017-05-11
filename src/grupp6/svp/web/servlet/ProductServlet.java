@@ -1,5 +1,8 @@
 package grupp6.svp.web.servlet;
 
+import grupp6.svp.data.DataFacade;
+import grupp6.svp.data.DataTransferObjects.ProductData;
+import grupp6.svp.domain.DomainFacade;
 import grupp6.svp.web.EnumPage;
 import grupp6.svp.web.PageFactory;
 
@@ -30,7 +33,13 @@ public class ProductServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getParameter("id" ));
+        ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
+
+        data.setProductId(Integer.parseInt(request.getParameter("id")));
+
+        DataFacade.instance().find(data);
+        System.out.println("ProductSERVLET");
+
     }
 
     /**
@@ -40,3 +49,5 @@ public class ProductServlet extends HttpServlet {
         PageFactory.instance().answer(request, response, EnumPage.LOGIN);
     }
 }
+
+

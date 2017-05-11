@@ -14,7 +14,7 @@ public class Admin {
     }
 
     public int getAdminID() {
-        return data.getAdminID();
+        return data.getId();
     }
 
     public String getAdminFirstName() {

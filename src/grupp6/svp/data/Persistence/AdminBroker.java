@@ -1,10 +1,14 @@
-/*
+
 package grupp6.svp.data.Persistence;
 
 import grupp6.svp.data.DataTransferObjects.AdminData;
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
+import javax.xml.crypto.Data;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.UUID;
 
 public class AdminBroker extends Broker {
@@ -12,6 +16,11 @@ public class AdminBroker extends Broker {
     @Override
     public void insert(DataTransferObject object) {
 
+    }
+
+    @Override
+    public List<DataTransferObject> find(DataTransferObject obj) {
+        return null;
     }
 
     @Override
@@ -40,8 +49,9 @@ public class AdminBroker extends Broker {
     }
 
     @Override
-    public Object getFromStorage(UUID id) {
+    public DataTransferObject getFromStorage(int id, Connection con) {
         return null;
     }
 
-}*/
+
+}

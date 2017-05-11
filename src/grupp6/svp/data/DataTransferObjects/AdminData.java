@@ -11,10 +11,6 @@ public class AdminData extends DataTransferObject {
     private String AdminMail;
     private String AdminPassword;
 
-    public int getAdminID() {
-        return AdminID;
-    }
-
     public void setAdminID(int adminID) {
         AdminID = adminID;
     }
@@ -49,5 +45,10 @@ public class AdminData extends DataTransferObject {
 
     public void setAdminPassword(String adminPassword) {
         AdminPassword = adminPassword;
+    }
+
+    @Override
+    public int getId() {
+        return AdminID;
     }
 }

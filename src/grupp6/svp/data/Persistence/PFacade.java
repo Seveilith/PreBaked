@@ -13,7 +13,8 @@ public class PFacade {
     public void register(Class<?> cls, Broker broker){}
 
     public List<DataTransferObject> find(DataTransferObject data){
-
-    return null;
+        Broker broker = brokers.get(data.getClass());
+        System.out.println("PFACADE");
+        return broker.find(data);
     }
 }

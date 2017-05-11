@@ -28,6 +28,8 @@ public class DomainFacade {
 	}
 
 
+
+
 	public static boolean canLogin(String username, String password) {
 		User user = DataFacade.getUser(username);
 		if(user == null)
