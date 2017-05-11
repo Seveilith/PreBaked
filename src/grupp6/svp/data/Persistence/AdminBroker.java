@@ -1,3 +1,4 @@
+/*
 package grupp6.svp.data.Persistence;
 
 import grupp6.svp.data.DataTransferObjects.AdminData;
@@ -43,4 +44,4 @@ public class AdminBroker extends Broker {
         return null;
     }
 
-}
+}*/

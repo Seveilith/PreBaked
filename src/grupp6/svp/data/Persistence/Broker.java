@@ -2,7 +2,10 @@ package grupp6.svp.data.Persistence;
 
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DbConnect;
+import sun.security.util.ObjectIdentifier;
 
+import java.io.ObjectInput;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -11,7 +14,7 @@ import java.util.UUID;
  */
 public abstract class Broker {
 
-    private HashMap<UUID, Object> cache = new HashMap<UUID,Object>();
+    private HashMap<Integer, Object> cache = new HashMap<Integer,Object>();
 
     protected DbConnect dbCon;
 
@@ -21,11 +24,11 @@ public abstract class Broker {
 
     public abstract void insert(DataTransferObject object);
 
-    public Object find(UUID id){
+    public Object find(int id){
         if (cache.containsKey(id))
             return cache.get(id);
 
-        Object obj = this.getFromStorage(id); //OCH CONNECTIOn
+        Object obj = this.getFromStorage(id, dbCon.getConnection()); //OCH CONNECTIOn
         cache.put(id,obj);
         return obj;
     }
@@ -34,5 +37,7 @@ public abstract class Broker {
 
     public abstract void delete(DataTransferObject object);
 
-    public abstract Object getFromStorage(UUID id); //id: ObjectIdentifier
+    public abstract Object getFromStorage(int id, Connection con); //id: ObjectIdentifier
+
+
 }

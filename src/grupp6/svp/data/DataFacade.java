@@ -4,13 +4,10 @@ import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DataTransferObjects.ProductData;
 import grupp6.svp.data.Persistence.PFacade;
 import grupp6.svp.domain.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-
-
 
 public class DataFacade {
 
