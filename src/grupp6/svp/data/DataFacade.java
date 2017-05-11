@@ -1,13 +1,13 @@
 package grupp6.svp.data;
 
-import grupp6.svp.data.DataTransferObjects.DataTransferObject;
-import grupp6.svp.data.DataTransferObjects.ProductData;
-import grupp6.svp.data.Persistence.PFacade;
+import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.domain.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+import grupp6.svp.data.Persistence.*;
 
 public class DataFacade {
 
@@ -24,17 +24,35 @@ public class DataFacade {
 //		return users.get(username);
 //	}
 
+	private static DataFacade instance = null;
+
+	/**
+	 *
+	 * @return
+	 */
+	public static DataFacade instance(){
+		if(instance == null)
+			instance = new DataFacade();
+		return instance;
+	}
+
 	protected PFacade per;
 
-	public void register(){}
+	public void register(){
+		per = new PFacade();
+		per.register(AdminData.class, new AdminBroker());
+		per.register(BasketData.class, new BasketBroker());
+		per.register(BasketProductsData.class, new BasketProductsBroker());
+		per.register(CustomerData.class, new CustomerBroker());
+		per.register(DesignerData.class, new DesignerBroker());
+		per.register(DesignerOrderData.class, new DesignerOrdersBroker());
+		per.register(OrderData.class, new OrderBroker());
+		per.register(OrderedProductData.class, new OrderedProductBroker());
+		per.register(ProductData.class, new ProductBroker());
+	}
 
-	public List<ProductData> find(ProductData product){
-		List<ProductData> result = new ArrayList<>();
-		List<DataTransferObject> list = per.find(product);
-
-		for (DataTransferObject dto : list) {
-			result.add((ProductData) dto);
-		}
+	public List<DataTransferObject> find(DataTransferObject dto){
+		List<DataTransferObject> result = per.find(dto);
 		return result;
 	}
 

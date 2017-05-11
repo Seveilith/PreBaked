@@ -7,6 +7,7 @@ import sun.security.util.ObjectIdentifier;
 import grupp6.svp.domain.*;
 
 import java.sql.*;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -27,6 +28,13 @@ public class ProductBroker extends Broker {
     @Override
     public void delete(DataTransferObject object) {
 
+    }
+
+    public List<DataTransferObject> find(ProductData obj){
+
+        System.out.println("I PRODUCTBROKER");
+
+        return null;
     }
 
     @Override
@@ -55,11 +63,5 @@ public class ProductBroker extends Broker {
             e.printStackTrace();
         }
         return productData;
-    }
-
-    public static void main(String[] args){
-        ProductBroker broker = new ProductBroker();
-
-        broker.find(1);
     }
 }

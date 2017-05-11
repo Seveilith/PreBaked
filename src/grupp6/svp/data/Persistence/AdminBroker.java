@@ -1,8 +1,10 @@
-/*
+
 package grupp6.svp.data.Persistence;
 
 import grupp6.svp.data.DataTransferObjects.AdminData;
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
@@ -40,8 +42,9 @@ public class AdminBroker extends Broker {
     }
 
     @Override
-    public Object getFromStorage(UUID id) {
+    public Object getFromStorage(int id, Connection con) {
         return null;
     }
 
-}*/
+
+}
