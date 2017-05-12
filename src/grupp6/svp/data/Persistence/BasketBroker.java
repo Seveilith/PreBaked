@@ -27,7 +27,7 @@ public class BasketBroker extends Broker {
     }
 
     @Override
-    public void delete(DataTransferObject object) {
+    public void delete(DataTransferObject object, Connection con) {
 
     }
 

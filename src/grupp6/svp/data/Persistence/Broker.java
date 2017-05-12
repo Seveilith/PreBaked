@@ -29,7 +29,7 @@ public abstract class Broker {
 
     public abstract void update(DataTransferObject object);
 
-    public abstract void delete(DataTransferObject object);
+    public abstract void delete(DataTransferObject object, Connection con);
 
     public abstract DataTransferObject getFromStorage(int id, Connection con); //id: ObjectIdentifier
 

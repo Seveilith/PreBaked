@@ -19,6 +19,11 @@
     <input type="submit" value="Submit">
 </form>
 
+<form action="product">
+    <input type="hidden" name="deleteid" value="23">
+    <input type="submit" value="Submit">
+</form>
+
 
 </body>
 </html>

@@ -9,6 +9,8 @@ import java.util.Random;
 
 import grupp6.svp.data.Persistence.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.crypto.Data;
 
 public class DataFacade {
@@ -54,6 +56,13 @@ public class DataFacade {
 		per.register(OrderedProductData.class, new OrderedProductBroker());
 		per.register(ProductData.class, new ProductBroker());
 	}
+
+	public void answer(HttpServletResponse response, HttpServletRequest request, String object){
+		if (object.equals("product")){
+			ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
+			find(data);
+		}
+    }
 
 	public List<DataTransferObject> find(DataTransferObject dto){
 

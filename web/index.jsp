@@ -26,6 +26,7 @@
 			<li class="nav__menu-item">
 				<a class="nav__menu-link page-link" href="login.jsp" title="Logga in">Logga in</a>
 			</li>
+
 		</ul>
 	</nav>
 </header>
