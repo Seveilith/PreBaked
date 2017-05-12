@@ -13,6 +13,26 @@
 </head>
 <body>
 
+<div>
+    <form action="product" method="GET">
+        <table class="product_input">
+            <caption>Mata in en ny produkt</caption>
+            <tr>
+                <th>Produktnamn:</th>
+                <th>Beskrivning:</th>
+                <th>Pris:</th>
+                <th>Antal i lager:</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="product_name"></td>
+                <td><input type="text" name="product_description"/></td>
+                <td><input type="text" name="product_price"></td>
+                <td><input type="text" name="product_quantity" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+</div>
 
 </body>
 </html>
