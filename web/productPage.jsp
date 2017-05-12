@@ -14,13 +14,14 @@
 
 <form action="product">
     ID:<br>
-    <input type="text" name="id" value="1">
+    <input type="text" name="id" value="find">
+    <input type ="hidden" name="operation" value="delete">
     <br><br>
     <input type="submit" value="Submit">
 </form>
 
 <form action="product">
-    <input type="hidden" name="deleteid" value="23">
+    <input type="hidden" name="delete" value="23">
     <input type="submit" value="Submit">
 </form>
 

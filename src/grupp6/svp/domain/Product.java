@@ -1,44 +1,31 @@
 package grupp6.svp.domain;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+import grupp6.svp.data.DataTransferObjects.ProductData;
+
 /**
  * Created by malinvagnborg on 2017-05-08.
  */
 public class Product {
 
+    private ProductData data;
 
-    private int productId;
+    public Product(){
+        data = new ProductData();
 
-    private String productName;
-
-    private String productDescription;
-
-    private int productPrice;
-
-    private int productQuantity;
-
-    public Product(int productId, String productName, String productDescription, int productPrice, int productQuantity){
-        this.productId = productId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
-        this.productQuantity = productQuantity;
     }
 
-    public int getProductId(){return productId;}
+    public DataTransferObject delete(int id){
+        data.setProductId(id);
 
-    public String getProductName() {
-        return productName;
+        return data;
     }
 
-    public String getProductDescription() {
-        return productDescription;
+    public void find(){
+
     }
 
-    public int getProductPrice() {
-        return productPrice;
-    }
+    public void insert(){
 
-    public int getProductQuantity() {
-        return productQuantity;
     }
 }
