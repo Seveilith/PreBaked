@@ -28,8 +28,41 @@ public class ProductBroker extends Broker {
     }
 
     @Override
-    public void delete(DataTransferObject object) {
+    public void delete(DataTransferObject obj, Connection con) {
+        if (cache.containsKey(obj.getId())){
+            cache.remove(obj);
+        }
 
+        PreparedStatement preparedStatement = null;
+
+        String deleteSQL = "DELETE FROM pgiei02.Product WHERE ProductID = ?";
+
+        try {
+            con = DbConnect.getConnection();
+            preparedStatement = con.prepareStatement(deleteSQL);
+            preparedStatement.setInt(1, obj.getId());
+
+            // execute delete SQL stetement
+            preparedStatement.executeUpdate();
+
+            System.out.println("Record is deleted!");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (con != null) {
+                dbCon.returnConnection(con);
+            }
+        }
     }
 
     @Override
@@ -40,7 +73,7 @@ public class ProductBroker extends Broker {
             return temp;
         }
 
-        temp.add(getFromStorage(obj.getId(), dbCon.getConnection())); //OCH CONNECTIOn
+        temp.add(getFromStorage(obj.getId(), dbCon.getConnection()));
         cache.put(obj.getId(), obj);
 
         return temp;

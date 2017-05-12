@@ -28,16 +28,12 @@ public class ProductServlet extends HttpServlet {
     }
 
 
-
+    //// TANKEN ÄR ATT VI HÄR BARA SKA SKICKA VIDARE RESPONSE OCH REQUEST TILL RÄTT STÄLLE ALLTSÅ RÄTT FASAD, DENNA SKA SEDAN DELEGERA UPPGIFTEN
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
-
-        data.setProductId(Integer.parseInt(request.getParameter("id")));
-
-        DataFacade.instance().find(data);
+        DataFacade.instance().answer(response,request, "product");
     }
 
     /**
