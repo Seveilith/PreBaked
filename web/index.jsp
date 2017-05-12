@@ -23,9 +23,21 @@
 			<li class="nav__menu-item">
 				<a class="nav__menu-link page-link" href="basket.jsp" title="Varukorg">Varukorg</a>
 			</li>
-			<li class="nav__menu-item">
-				<a class="nav__menu-link page-link" href="login.jsp" title="Logga in">Logga in</a>
-			</li>
+
+			<%
+				String username = (String)request.getSession().getAttribute("Username");
+
+				if (username == null) { %>
+					<li class="nav__menu-item">
+						<a class="nav__menu-link page-link" href="login.jsp" title="Logga in">Logga in</a>
+					</li>
+			<% }
+				else { %>
+					<li class="nav__menu-item">
+						<a class="nav__menu-link page-link" href="logout.jsp" title="Logga in">Logga ut</a>
+					</li>
+			<% } %>
+
 
 		</ul>
 	</nav>
