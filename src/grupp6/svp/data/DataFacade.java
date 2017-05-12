@@ -57,10 +57,19 @@ public class DataFacade {
 		per.register(ProductData.class, new ProductBroker());
 	}
 
-	public void answer(HttpServletResponse response, HttpServletRequest request, String object){
-		if (object.equals("product")){
-			ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
-			find(data);
+	public void answer(HttpServletResponse response, HttpServletRequest request){
+		ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
+
+		if (request.getParameter("operation").equals("delete")){
+			//delete(data);
+		}
+
+		if (request.getParameter("operation").equals("find")){
+			//find(data);
+		}
+
+		if (request.getParameter("operation").equals("insert")){
+			//insert(data);
 		}
     }
 

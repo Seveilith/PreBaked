@@ -33,14 +33,15 @@ public class ProductServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DataFacade.instance().answer(response,request, "product");
+        DataFacade.instance().answer(response,request);
+
     }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PageFactory.instance().answer(request, response, EnumPage.LOGIN);
+        DomainFacade.instance().answer(response,request);
     }
 }
 
