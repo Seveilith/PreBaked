@@ -61,15 +61,15 @@ public class DataFacade {
 		ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
 
 		if (request.getParameter("operation").equals("delete")){
-			delete(data);
+			//delete(data);
 		}
 
 		if (request.getParameter("operation").equals("find")){
-			find(data);
+			//find(data);
 		}
 
 		if (request.getParameter("operation").equals("insert")){
-			insert(data);
+			//insert(data);
 		}
     }
 
