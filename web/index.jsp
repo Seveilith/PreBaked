@@ -15,7 +15,7 @@
 	<nav class="nav container">
 		<ul class="nav__menu" id="nav-primary">
 			<li class="nav__menu-item home">
-				<a class="nav__menu-link page-link" href="./" rel="index"><img class="loga " src="files/img/logo.png" alt="Loga"></a>
+				<a class="nav__menu-link page-link" id="homeLogo" href="./" rel="index"><img class="loga " src="files/img/logo.png" alt="Loga"></a>
 			</li>
 			<li class="nav__menu-item">
 				<a class="nav__menu-link page-link" href="productPage.jsp" title="Produkter">Produkter</a>
@@ -31,20 +31,9 @@
 </header>
 
 <!--MAIN CONTAINER-->
-<div class="mainContainer">
-	<div class="leftPanel">
+<div class="container">
+	<div class="main-site">
 
-
-		<!--<div class="loginForm">
-			<form action="login" method="post">
-				<table>
-					<tr><td><b>Username:</b></td><td><input type="text" name="username" style="width: 160px; "/></td></tr>
-					<tr><td><b>Password:</b></td><td><input type="password" name="password" style="width: 160px; "/></td></tr>
-					<tr><td><input type="submit" value="Send" /></td></tr>
-				</table>
-			</form>
-		</div>
--->
 		<div id="buttonLogin">
 			<form action="login.jsp">
 				<input type="submit" value="Logga in" />
@@ -62,7 +51,7 @@
 
 	</div>
 	
-	<div class="centerPanel">
+	<div>
 		<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra turpis lacus, ut fringilla massa luctus nec. Ut quis dui nec ipsum tristique dictum. Nulla non maximus quam. Nullam condimentum convallis dolor, a molestie sem semper sit amet. Nulla eleifend dolor sit amet orci hendrerit varius. Praesent mollis consequat ex a elementum. Aenean aliquet ipsum et scelerisque mattis. Sed diam orci, rutrum non nulla in, tempus commodo sem. Donec rutrum in felis eu placerat. Donec dapibus sem nec nulla facilisis eleifend. Pellentesque eu faucibus lorem, vel pretium leo.</p>
 		<p> Vivamus neque diam, finibus in convallis id, iaculis ac nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam quis elementum est. Nullam quis pellentesque massa, ac gravida metus. Donec dignissim purus mauris, quis eleifend ante hendrerit eu. Aliquam efficitur arcu magna, non efficitur ex tempus ac. Praesent sit amet metus a felis rutrum pellentesque. Quisque in facilisis magna. Ut risus justo, finibus non nulla et, efficitur luctus lectus. Nulla ac laoreet nisi. Cras id est urna. Suspendisse ut tempus augue. Nulla porta risus et ultrices egestas. Fusce volutpat, turpis sit amet iaculis feugiat, dui ligula eleifend velit, eget dictum ligula quam at nulla. Suspendisse odio turpis, luctus ac nisl sed, cursus aliquet est.</p>
 

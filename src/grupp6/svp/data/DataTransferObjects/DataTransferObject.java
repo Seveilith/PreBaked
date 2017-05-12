@@ -9,6 +9,8 @@ public abstract class DataTransferObject {
 
     //Objectidentifier id;
 
+    public abstract int getId();
+
     public void save(){};
 
     public void reload(){};

@@ -7,6 +7,7 @@ import sun.security.util.ObjectIdentifier;
 import java.io.ObjectInput;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -14,7 +15,7 @@ import java.util.UUID;
  */
 public abstract class Broker {
 
-    private HashMap<Integer, Object> cache = new HashMap<Integer,Object>();
+    protected HashMap<Integer, Object> cache = new HashMap<Integer,Object>();
 
     protected DbConnect dbCon;
 
@@ -24,20 +25,13 @@ public abstract class Broker {
 
     public abstract void insert(DataTransferObject object);
 
-    public Object find(int id){
-        if (cache.containsKey(id))
-            return cache.get(id);
-
-        Object obj = this.getFromStorage(id, dbCon.getConnection()); //OCH CONNECTIOn
-        cache.put(id,obj);
-        return obj;
-    }
+    public abstract List<DataTransferObject> find(DataTransferObject obj);
 
     public abstract void update(DataTransferObject object);
 
     public abstract void delete(DataTransferObject object);
 
-    public abstract Object getFromStorage(int id, Connection con); //id: ObjectIdentifier
+    public abstract DataTransferObject getFromStorage(int id, Connection con); //id: ObjectIdentifier
 
 
 }

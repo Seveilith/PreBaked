@@ -1,5 +1,7 @@
 package grupp6.svp.data.DataTransferObjects;
 
+import grupp6.svp.domain.Product;
+
 /**
  * Created by alo on 2017-05-08.
  */
@@ -10,7 +12,14 @@ public class ProductData extends DataTransferObject  {
     private int productPrice;
     private int productQuantity;
 
-    public int getProductId() {
+    public ProductData(int productId){
+        this.productId = productId;
+    }
+
+    public ProductData(){
+    }
+
+    public int getId() {
         return productId;
     }
 

@@ -1,4 +1,5 @@
 package grupp6.svp.data.Persistence;
+import grupp6.svp.data.DataFacade;
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 
 import java.util.HashMap;
@@ -10,10 +11,13 @@ import java.util.List;
 public class PFacade {
     protected HashMap<Class<?>, Broker> brokers = new HashMap<>();
 
-    public void register(Class<?> cls, Broker broker){}
+    public void register(Class<?> cls, Broker broker){
+        brokers.put(cls, broker);
+    }
 
     public List<DataTransferObject> find(DataTransferObject data){
+        Broker broker = brokers.get(data.getClass());
 
-    return null;
+        return broker.find(data);
     }
 }
