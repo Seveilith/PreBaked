@@ -6,6 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    // Kontrollerar om användaren som kommer åt sidan är inloggad eller inte.
+    String username = (String)request.getSession().getAttribute("Username");
+    System.out.println("Current username: " + username);
+
+    if (username == null) {
+        System.out.println("PreBaked: Username is not defined -> User is not logged in! Redirecting to index.jsp");
+        response.sendRedirect("/index.jsp");
+    } else if (username.charAt(5) != '0') {
+        System.out.println("PreBaked: Username is not an Admin! Redirecting to index.jsp");
+        response.sendRedirect("/index.jsp");
+    }
+%>
+
+
 <html>
 <head>
     <title>PreBaked</title>
