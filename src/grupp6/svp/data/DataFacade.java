@@ -2,13 +2,13 @@ package grupp6.svp.data;
 
 import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.domain.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+
+import java.util.*;
 
 import grupp6.svp.data.Persistence.*;
+import grupp6.svp.web.servlet.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.crypto.Data;
@@ -29,7 +29,7 @@ public class DataFacade {
 //	}
 
 	private static DataFacade instance = null;
-
+	protected HashMap<Class<?>, DataTransferObject> servlets = new HashMap<>();
 	/**
 	 *
 	 * @return
@@ -57,19 +57,40 @@ public class DataFacade {
 		per.register(ProductData.class, new ProductBroker());
 	}
 
-	public void answer(HttpServletResponse response, HttpServletRequest request){
-		ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
+	public DataTransferObject getDTO(HttpServlet servlet){
+
+		servlets.put(AdminServlet.class, new AdminData());
+		servlets.put(BasketServlet.class, new BasketData());
+		servlets.put(CustomerServlet.class, new CustomerData());
+		servlets.put(DesignerServlet.class, new DesignerData());
+		servlets.put(ProductServlet.class, new ProductData());
+
+        return servlets.get(servlet.getClass());
+
+		/*
+		Metod som tar in en servlet, den servlet vi kommer ifrån!!
+		Den ser vilken servlet som kopplas till vilken DTO och skickar ut motsvarande DTO
+		 */
+
+
+	}
+
+	public void answer(HttpServletResponse response, HttpServletRequest request, HttpServlet servlet){
+		//ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
+
+        DataTransferObject obj = getDTO(servlet);
+
 
 		if (request.getParameter("operation").equals("delete")){
-			//delete(data);
+			//delete(getDTO(servlet));
 		}
 
 		if (request.getParameter("operation").equals("find")){
-			//find(data);
+			find(getDTO(servlet));
 		}
 
 		if (request.getParameter("operation").equals("insert")){
-			//insert(data);
+			//insert(getDTO(servlet));
 		}
     }
 

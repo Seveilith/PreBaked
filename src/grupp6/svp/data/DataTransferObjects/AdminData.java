@@ -51,4 +51,9 @@ public class AdminData extends DataTransferObject {
     public int getId() {
         return AdminID;
     }
+
+    @Override
+    public void setId(int id) {
+        this.AdminID = id;
+    }
 }

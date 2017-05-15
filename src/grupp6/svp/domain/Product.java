@@ -16,7 +16,7 @@ public class Product {
     }
 
     public DataTransferObject delete(int id){
-        data.setProductId(id);
+        data.setId(id);
 
         return data;
     }

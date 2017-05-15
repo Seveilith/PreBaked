@@ -16,4 +16,6 @@ public abstract class DataTransferObject {
     public void reload(){};
 
     public void delete(){};
+
+    public abstract void setId(int id);
 }

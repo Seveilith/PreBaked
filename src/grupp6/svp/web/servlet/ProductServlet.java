@@ -33,7 +33,8 @@ public class ProductServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DataFacade.instance().answer(response,request);
+        DataFacade.instance().answer(response,request, this);
+
 
     }
 

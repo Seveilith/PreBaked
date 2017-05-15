@@ -93,7 +93,7 @@ public class ProductBroker extends Broker {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
-                productData.setProductId(rs.getInt("ProductID"));
+                productData.setId(rs.getInt("ProductID"));
                 productData.setProductName(rs.getString("ProductName"));
                 productData.setProductDescription(rs.getString("ProductDescription"));
                 productData.setProductPrice(rs.getInt("ProductPrice"));

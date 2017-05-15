@@ -23,7 +23,7 @@ public class ProductData extends DataTransferObject  {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setId(int productId) {
         this.productId = productId;
     }
 
