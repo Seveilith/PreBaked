@@ -1,9 +1,14 @@
 package grupp6.svp.domain;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by malinvagnborg on 2017-05-08.
  */
-public class BasketProducts {
+public class BasketProducts extends DomainObject{
 
     private int BasketID;
     private int ProductID;
@@ -26,5 +31,10 @@ public class BasketProducts {
         this.ProductID = ProductID;
         this.Quantity = Quantity;
 
+    }
+
+    @Override
+    public DataTransferObject create(HttpServletResponse response, HttpServletRequest request) {
+        return null;
     }
 }

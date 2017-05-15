@@ -2,13 +2,14 @@ package grupp6.svp.domain;
 
 import java.util.HashMap;
 import java.util.List;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import grupp6.svp.data.DataFacade;
-import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.data.Persistence.Broker;
-import grupp6.svp.web.servlet.AdminServlet;
+import grupp6.svp.web.servlet.*;
 
 
 public class DomainFacade {
@@ -25,6 +26,30 @@ public class DomainFacade {
 		return instance;
 	}
 
+	protected HashMap<Class<?>, DomainObject> domserv = new HashMap<>();
+
+	public DomainObject getDTO(HttpServlet servlet){
+		domserv.put(AdminServlet.class, new Admin());
+		domserv.put(BasketServlet.class, new Basket());
+		domserv.put(CustomerServlet.class, new Customer());
+		domserv.put(DesignerServlet.class, new Designer());
+		domserv.put(ProductServlet.class, new Product());
+
+		return domserv.get(servlet.getClass());
+	}
+
+	public void answer(HttpServletResponse response, HttpServletRequest request, HttpServlet servlet){
+
+		DomainObject obj = getDTO(servlet);
+
+		if (request.getParameter("operation").equals("insert")){
+			DataTransferObject dto = obj.create(response, request);
+
+			DataFacade.instance().insert(dto);
+		}
+
+
+	}
 
 
 	public static boolean canLogin(String username, String password) {
@@ -50,9 +75,5 @@ public class DomainFacade {
 
 	public static void logout(HttpSession session) {
 		session.removeAttribute("Username");
-	}
-
-	public void answer(HttpServletResponse response, HttpServletRequest request) {
-
 	}
 }

@@ -17,23 +17,25 @@
     <input type="text" name="id" value="">
     <input type ="hidden" name="operation" value="find">
     <br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Find">
 </form>
 
+<h2>Delete Product </h2>
 <form action="product">
+    <input type="text" name="id" value="">
     <input type="hidden" name="operation" value="delete">
-    <input type="submit" value="Submit">
+    <input type="submit" value="Delete">
 </form>
 
 <form action="product">
     ID:<br>
     <h2>Update product</h2>
-    <input type="text" name="id" placeholder="id" value="">
-    <input type="text" name="id" placeholder="name" value="">
-    <input type="text" name="id" placeholder="description" value="">
-    <input type="text" name="id" placeholder="" value="">
-    <input type="text" name="id" placeholder="" value="">
-    <input type ="hidden" name="operation" value="update">
+    <input type="text" name="id" placeholder="ProductId" value="">
+    <input type="text" name="name" placeholder="Name" value="">
+    <input type="text" name="description" placeholder="Description" value="">
+    <input type="text" name="price" placeholder="Price" value="">
+    <input type="text" name="quantity" placeholder="Quantity" value="">
+    <input type ="hidden" name="operation" value="insert">
     <br><br>
     <input type="submit" value="Submit">
 </form>

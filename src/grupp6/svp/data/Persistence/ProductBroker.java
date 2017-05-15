@@ -18,8 +18,26 @@ import java.util.UUID;
 public class ProductBroker extends Broker {
 
     @Override
-    public void insert(DataTransferObject object) {
+    public void insert(DataTransferObject object, Connection con) {
+        String insertTableSQL = "INSERT INTO pgiei02.Product(ProductID, ProductName, ProductDescription, ProductPrice, ProductQuantity) VALUES(?,?,?,?,?)";
 
+        ProductData product = (ProductData) object;
+
+        System.out.println(product.getProductName());
+        System.out.println("I PRODUCTBROKER");
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
+            preparedStatement.setInt(1, product.getId());
+            preparedStatement.setString(2, product.getProductName());
+            preparedStatement.setString(3, product.getProductDescription());
+            preparedStatement.setInt(4,product.getProductPrice());
+            preparedStatement.setInt(5, product.getProductQuantity());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -29,7 +47,7 @@ public class ProductBroker extends Broker {
 
     @Override
     public void delete(DataTransferObject obj, Connection con) {
-        if (cache.containsKey(obj.getId())){
+        if (cache.containsKey(obj.getId())) {
             cache.remove(obj);
         }
 
@@ -40,6 +58,7 @@ public class ProductBroker extends Broker {
         try {
             con = DbConnect.getConnection();
             preparedStatement = con.prepareStatement(deleteSQL);
+            System.out.println(obj.getId());
             preparedStatement.setInt(1, obj.getId());
 
             // execute delete SQL stetement
@@ -64,6 +83,7 @@ public class ProductBroker extends Broker {
             }
         }
     }
+
 
     @Override
     public List<DataTransferObject> find(DataTransferObject obj){

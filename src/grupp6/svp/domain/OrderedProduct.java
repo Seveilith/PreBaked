@@ -1,11 +1,15 @@
 package grupp6.svp.domain;
 
 import grupp6.svp.data.DataFacade;
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by malinvagnborg on 2017-05-08.
  */
-public class OrderedProduct {
+public class OrderedProduct extends DomainObject {
 
     private int productId;
 
@@ -46,4 +50,8 @@ public class OrderedProduct {
         this.orderId = orderId;
     }
 
+    @Override
+    public DataTransferObject create(HttpServletResponse response, HttpServletRequest request) {
+        return null;
+    }
 }

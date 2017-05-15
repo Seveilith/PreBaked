@@ -1,9 +1,14 @@
 package grupp6.svp.domain;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by malinvagnborg on 2017-05-08.
  */
-public class Customer {
+public class Customer extends DomainObject{
     private int CustomerID;
     private String CustomerFirstName;
     private String CustomerLastName;
@@ -13,17 +18,7 @@ public class Customer {
     private String CustomerMail;
     private String CustomerPassword;
 
-    public Customer(int CustomerID, String CustomerFirstName, String CustomerLastName, String CustomerAdress, String CustomerCity, int CustomerZipCode, String CustomerMail, String CustomerPassword){
-        this.CustomerID = CustomerID;
-        this.CustomerFirstName = CustomerFirstName;
-        this.CustomerLastName = CustomerLastName;
-        this.CustomerAdress = CustomerAdress;
-        this.CustomerCity = CustomerCity;
-        this.CustomerZipCode = CustomerZipCode;
-        this.CustomerMail = CustomerMail;
-        this.CustomerPassword = CustomerPassword;
 
-    }
 
     public int getCustomerID() {
         return CustomerID;
@@ -55,5 +50,10 @@ public class Customer {
 
     public String getCustomerPassword() {
         return CustomerPassword;
+    }
+
+    @Override
+    public DataTransferObject create(HttpServletResponse response, HttpServletRequest request) {
+        return null;
     }
 }

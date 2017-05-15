@@ -58,7 +58,6 @@ public class DataFacade {
 	}
 
 	public DataTransferObject getDTO(HttpServlet servlet){
-
 		servlets.put(AdminServlet.class, new AdminData());
 		servlets.put(BasketServlet.class, new BasketData());
 		servlets.put(CustomerServlet.class, new CustomerData());
@@ -66,31 +65,18 @@ public class DataFacade {
 		servlets.put(ProductServlet.class, new ProductData());
 
         return servlets.get(servlet.getClass());
-
-		/*
-		Metod som tar in en servlet, den servlet vi kommer ifrån!!
-		Den ser vilken servlet som kopplas till vilken DTO och skickar ut motsvarande DTO
-		 */
-
-
 	}
 
 	public void answer(HttpServletResponse response, HttpServletRequest request, HttpServlet servlet){
-		//ProductData data = new ProductData(Integer.parseInt(request.getParameter("id")));
-
         DataTransferObject obj = getDTO(servlet);
-
+        obj.setId(Integer.parseInt(request.getParameter("id")));
 
 		if (request.getParameter("operation").equals("delete")){
-			//delete(getDTO(servlet));
+			delete(obj);
 		}
 
 		if (request.getParameter("operation").equals("find")){
-			find(getDTO(servlet));
-		}
-
-		if (request.getParameter("operation").equals("insert")){
-			//insert(getDTO(servlet));
+			find(obj);
 		}
     }
 
@@ -100,6 +86,17 @@ public class DataFacade {
 
 		return result;
 	}
+
+	public void delete(DataTransferObject dto){
+	    per.delete(dto);
+
+    }
+
+    public void insert(DataTransferObject dto) {
+        System.out.println("Datafacade");
+        per.insert(dto);
+
+    }
 
 
 

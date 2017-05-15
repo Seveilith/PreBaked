@@ -15,7 +15,7 @@ public class CustomerBroker extends Broker {
 
 
     @Override
-    public void insert(DataTransferObject object) {
+    public void insert(DataTransferObject object, Connection con) {
 
     }
 

@@ -1,9 +1,14 @@
 package grupp6.svp.domain;
 
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by malinvagnborg on 2017-05-08.
  */
-public class Designer {
+public class Designer extends DomainObject {
 
     private int designerId;
 
@@ -14,17 +19,6 @@ public class Designer {
     private String designerMail;
 
     private String designerPassword;
-
-    public Designer(int designerId, String designerFirstName, String designerLastName, String designerMail, String designerPassword) {
-        this.designerId = designerId;
-        this.designerFirstName = designerFirstName;
-        this.designerLastName = designerLastName;
-        this.designerMail = designerMail;
-        this.designerPassword = designerPassword;
-
-        // TODO Registrera objektet i fasaden?
-        // DataFacade.register(this);
-    }
 
     public int getDesignerId() {
         return designerId;
@@ -64,5 +58,10 @@ public class Designer {
 
     public void setDesignerPassword(String designerPassword) {
         this.designerPassword = designerPassword;
+    }
+
+    @Override
+    public DataTransferObject create(HttpServletResponse response, HttpServletRequest request) {
+        return null;
     }
 }

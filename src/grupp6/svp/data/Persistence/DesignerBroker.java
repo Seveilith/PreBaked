@@ -14,7 +14,7 @@ public class DesignerBroker extends Broker {
 
 
     @Override
-    public void insert(DataTransferObject object) {
+    public void insert(DataTransferObject object, Connection con) {
 
     }
 

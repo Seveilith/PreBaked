@@ -1,8 +1,12 @@
 package grupp6.svp.domain;
 
 import grupp6.svp.data.DataFacade;
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 
-public class Activity {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Activity extends DomainObject{
 	
 	public final String username;
 	public final String date;
@@ -21,4 +25,10 @@ public class Activity {
 		
 		DataFacade.register(user, this);
 	}
+
+	@Override
+	public DataTransferObject create(HttpServletResponse response, HttpServletRequest request) {
+		return null;
+	}
+
 }

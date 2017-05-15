@@ -23,7 +23,7 @@ public abstract class Broker {
         dbCon = new DbConnect();
     }
 
-    public abstract void insert(DataTransferObject object);
+    public abstract void insert(DataTransferObject object, Connection con);
 
     public abstract List<DataTransferObject> find(DataTransferObject obj);
 

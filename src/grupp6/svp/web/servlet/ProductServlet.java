@@ -33,16 +33,19 @@ public class ProductServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DataFacade.instance().answer(response,request, this);
 
-
+        if (request.getParameter("operation").equals("insert")){
+            DomainFacade.instance().answer(response,request,this);
+        } else {
+            DataFacade.instance().answer(response,request, this);
+        }
     }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DomainFacade.instance().answer(response,request);
+
     }
 }
 
