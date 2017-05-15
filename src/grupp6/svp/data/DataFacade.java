@@ -93,9 +93,7 @@ public class DataFacade {
     }
 
     public void insert(DataTransferObject dto) {
-        System.out.println("Datafacade");
         per.insert(dto);
-
     }
 
 

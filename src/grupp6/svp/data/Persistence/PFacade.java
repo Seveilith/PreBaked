@@ -33,8 +33,6 @@ public class PFacade {
     public void insert(DataTransferObject data){
         Broker broker = brokers.get(data.getClass());
 
-        System.out.println("I pFacade");
-
         broker.insert(data, DbConnect.getConnection());
     }
 }

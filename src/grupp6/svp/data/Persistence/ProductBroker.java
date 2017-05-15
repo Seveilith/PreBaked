@@ -19,12 +19,11 @@ public class ProductBroker extends Broker {
 
     @Override
     public void insert(DataTransferObject object, Connection con) {
-        String insertTableSQL = "INSERT INTO pgiei02.Product(ProductID, ProductName, ProductDescription, ProductPrice, ProductQuantity) VALUES(?,?,?,?,?)";
+        String insertTableSQL = "INSERT INTO pgiei02.Product" +
+                "(ProductID, ProductName, ProductDescription, ProductPrice, ProductQuantity)" +
+                " VALUES(?,?,?,?,?)";
 
         ProductData product = (ProductData) object;
-
-        System.out.println(product.getProductName());
-        System.out.println("I PRODUCTBROKER");
 
         try {
             PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);

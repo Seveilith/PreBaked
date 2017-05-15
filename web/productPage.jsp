@@ -29,7 +29,7 @@
 
 <form action="product">
     ID:<br>
-    <h2>Update product</h2>
+    <h2>Insert product</h2>
     <input type="text" name="id" placeholder="ProductId" value="">
     <input type="text" name="name" placeholder="Name" value="">
     <input type="text" name="description" placeholder="Description" value="">

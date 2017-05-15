@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import grupp6.svp.data.DataFacade;
 import grupp6.svp.data.DataTransferObjects.*;
-import grupp6.svp.data.Persistence.Broker;
 import grupp6.svp.web.servlet.*;
 
 
@@ -47,8 +46,6 @@ public class DomainFacade {
 
 			DataFacade.instance().insert(dto);
 		}
-
-
 	}
 
 

@@ -19,6 +19,7 @@ public class DbConnect {
 
     public static Connection getConnection(){
         Connection con = conStack.poll();
+        System.out.println(conStack.size());
 
         if (con == null)
             try {
