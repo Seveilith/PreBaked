@@ -3,11 +3,16 @@ package grupp6.svp.data;
 import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.domain.*;
 
+import java.io.IOException;
 import java.util.*;
 
 import grupp6.svp.data.Persistence.*;
+import grupp6.svp.web.ElementBuilder;
+import grupp6.svp.web.EnumPage;
+import grupp6.svp.web.PageFactory;
 import grupp6.svp.web.servlet.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,7 +78,15 @@ public class DataFacade {
 
 		if (request.getParameter("operation").equals("delete")){
 			delete(obj);
-		}
+            try {
+                response.sendRedirect("productPage.jsp");
+				ElementBuilder.addDeleteMsg(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 		if (request.getParameter("operation").equals("find")){
 			find(obj);

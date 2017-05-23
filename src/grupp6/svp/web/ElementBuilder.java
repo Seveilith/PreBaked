@@ -47,6 +47,16 @@ public class ElementBuilder {
 		request.getRequestDispatcher("/footer.jsp").include(request, response);
 	}
 
+	public static void addDeleteMsg(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter output = response.getWriter();
+		response.setContentType("text/html");
+
+		output.println("<div class=\"deletemsg\">");
+		output.println("<p> Deleted row</p>");
+		output.println("</div>");
+
+		System.out.println("I ADD DELETE");
+	}
 	
 	public static void addEnd(PrintWriter output) {
 		output.append("</body>");
@@ -63,7 +73,8 @@ public class ElementBuilder {
 		menu += "</div>";
 		return menu;
 	}
-	
+
+
 	/**
 	 * Just to fill out large areas where text is relevant but your fantasy have run dry.
 	 * For more life saving context visit http://www.lipsum.com/

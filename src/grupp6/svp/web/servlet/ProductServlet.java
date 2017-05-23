@@ -3,6 +3,7 @@ package grupp6.svp.web.servlet;
 import grupp6.svp.data.DataFacade;
 import grupp6.svp.data.DataTransferObjects.ProductData;
 import grupp6.svp.domain.DomainFacade;
+import grupp6.svp.web.ElementBuilder;
 import grupp6.svp.web.EnumPage;
 import grupp6.svp.web.PageFactory;
 
@@ -33,18 +34,16 @@ public class ProductServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DomainFacade.instance().answer(response,request,this);
+        DataFacade.instance().answer(response,request, this);
 
-        if (request.getParameter("operation").equals("insert")){
-            DomainFacade.instance().answer(response,request,this);
-        } else {
-            DataFacade.instance().answer(response,request, this);
-        }
     }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }

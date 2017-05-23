@@ -123,7 +123,7 @@ public class PageFactory {
 			return;
 		}
 		List<Activity> list = DomainFacade.getActivitites(username);
-		
+
 		response.setContentType("text/html"); //Divider between Logic & Page Building
 		
 		PrintWriter output = response.getWriter();
@@ -149,10 +149,10 @@ public class PageFactory {
 		
 		ElementBuilder.addFooter(request, response);
 		ElementBuilder.addEnd(output);
-		
-		
+
+
 	}
-	
+
 }
 
 

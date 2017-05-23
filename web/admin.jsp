@@ -29,26 +29,33 @@
 </head>
 <body>
 
-<div>
-    <form action="product" method="GET">
-        <table class="product_input">
-            <caption>Mata in en ny produkt</caption>
-            <tr>
-                <th>Produktnamn:</th>
-                <th>Beskrivning:</th>
-                <th>Pris:</th>
-                <th>Antal i lager:</th>
-            </tr>
-            <tr>
-                <td><input type="text" name="product_name"></td>
-                <td><input type="text" name="product_description"/></td>
-                <td><input type="text" name="product_price"></td>
-                <td><input type="text" name="product_quantity" /></td>
-            </tr>
-        </table>
-        <input type="submit" value="Submit" />
-    </form>
-</div>
+<h2>Delete Product </h2>
+<form action="product">
+    <input type="text" name="id" value="">
+    <input type="hidden" name="operation" value="delete">
+    <input type="submit" value="Delete">
+</form>
 
+<form action="product">
+    <table class="product_input">
+        <h2>Mata in en ny produkt</h2>
+        <tr>
+            <th>ID:</th>
+            <th>Produktnamn:</th>
+            <th>Beskrivning:</th>
+            <th>Pris:</th>
+            <th>Antal i lager:</th>
+        </tr>
+    <tr>
+        <td><input type="text" name="id" placeholder="ProductId" value=""></td>
+        <td><input type="text" name="name" placeholder="Name" value=""></td>
+        <td><input type="text" name="description" placeholder="Description" value=""></td>
+        <td><input type="text" name="price" placeholder="Price" value=""></td>
+        <td><input type="text" name="quantity" placeholder="Quantity" value=""></td>
+        <td><input type ="hidden" name="operation" value="insert"></td>
+    </tr>
+    </table>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>

@@ -10,7 +10,6 @@ import grupp6.svp.data.DataFacade;
 import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.web.servlet.*;
 
-
 public class DomainFacade {
 
 	private static DomainFacade instance = null;
