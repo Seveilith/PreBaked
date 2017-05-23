@@ -12,7 +12,8 @@ import java.util.List;
 public class AdminBroker extends Broker {
 
     @Override
-    public void insert(DataTransferObject object, Connection con) {}
+    public void insert(DataTransferObject object, Connection con) {
+    }
 
     @Override
     public List<DataTransferObject> find(DataTransferObject obj) {
@@ -40,7 +41,8 @@ public class AdminBroker extends Broker {
     }
 
     @Override
-    public void delete(DataTransferObject object, Connection con) {}
+    public void delete(DataTransferObject object, Connection con) {
+    }
 
     @Override
     public DataTransferObject getFromStorage(int id, Connection con) {

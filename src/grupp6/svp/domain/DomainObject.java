@@ -1,6 +1,7 @@
 package grupp6.svp.domain;
 
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

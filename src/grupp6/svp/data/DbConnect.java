@@ -8,6 +8,7 @@ public class DbConnect {
     private static final String MYSQL_URL = "jdbc:mysql://mysql.iei.liu.se:5432";
 
     private static ConcurrentLinkedQueue<Connection> conStack = new ConcurrentLinkedQueue<>();
+
     static {
         try {
             Class.forName(MYSQL_DRIVER);
@@ -17,13 +18,13 @@ public class DbConnect {
         }
     }
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         Connection con = conStack.poll();
         System.out.println(conStack.size());
 
         if (con == null)
             try {
-                con = DriverManager.getConnection(MYSQL_URL,"pgiei02","w3baU9tfF6,I");
+                con = DriverManager.getConnection(MYSQL_URL, "pgiei02", "w3baU9tfF6,I");
                 System.out.println("Connected to db...");
                 return con;
             } catch (SQLException e) {
@@ -32,7 +33,7 @@ public class DbConnect {
         return con;
     }
 
-    public static void returnConnection(Connection con){
+    public static void returnConnection(Connection con) {
         conStack.add(con);
     }
 }

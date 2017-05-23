@@ -2,6 +2,7 @@ package grupp6.svp.domain;
 
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DataTransferObjects.ProductData;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,19 +10,21 @@ public class Product extends DomainObject {
 
     private ProductData data;
 
-    public Product(){
+    public Product() {
         data = new ProductData();
     }
 
-    public DataTransferObject delete(int id){
+    public DataTransferObject delete(int id) {
         data.setId(id);
 
         return data;
     }
 
-    public void find(){}
+    public void find() {
+    }
 
-    public void insert(){}
+    public void insert() {
+    }
 
 
     @Override

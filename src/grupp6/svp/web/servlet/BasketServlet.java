@@ -1,9 +1,11 @@
 package grupp6.svp.web.servlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
 import grupp6.svp.domain.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import grupp6.svp.web.EnumPage;
 import grupp6.svp.web.PageFactory;
 
-@WebServlet(name="basket", urlPatterns={"/basket"})
+@WebServlet(name = "basket", urlPatterns = {"/basket"})
 public class BasketServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

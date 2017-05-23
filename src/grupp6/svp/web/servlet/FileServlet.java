@@ -53,11 +53,8 @@ public class FileServlet extends HttpServlet {
 
     // Constants ----------------------------------------------------------------------------------
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 4305131433772637586L;
-	private static final int DEFAULT_BUFFER_SIZE = 10240; // ..bytes = 10KB.
+    private static final long serialVersionUID = 4305131433772637586L;
+    private static final int DEFAULT_BUFFER_SIZE = 10240; // ..bytes = 10KB.
     private static final long DEFAULT_EXPIRE_TIME = 604800000L; // ..ms = 1 week.
     private static final String MULTIPART_BOUNDARY = "MULTIPART_BYTERANGES";
 
@@ -69,15 +66,16 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Initialize the servlet.
+     *
      * @see HttpServlet#init().
      */
     public void init() throws ServletException {
-    	
-    	String p = this.getServletContext().getRealPath("/");       
-    	
+
+        String p = this.getServletContext().getRealPath("/");
+
         // Get base path (path to get all resources from) as init parameter.
         this.basePath = p + getInitParameter("basePath");
-        
+
         // Validate base path.
         if (this.basePath == null) {
             throw new ServletException("FileServlet init param 'basePath' is required.");
@@ -85,50 +83,50 @@ public class FileServlet extends HttpServlet {
             File path = new File(this.basePath);
             if (!path.exists()) {
                 throw new ServletException("FileServlet init param 'basePath' value '"
-                    + this.basePath + "' does actually not exist in file system.");
+                        + this.basePath + "' does actually not exist in file system.");
             } else if (!path.isDirectory()) {
                 throw new ServletException("FileServlet init param 'basePath' value '"
-                    + this.basePath + "' is actually not a directory in file system.");
+                        + this.basePath + "' is actually not a directory in file system.");
             } else if (!path.canRead()) {
                 throw new ServletException("FileServlet init param 'basePath' value '"
-                    + this.basePath + "' is actually not readable in file system.");
+                        + this.basePath + "' is actually not readable in file system.");
             }
         }
     }
 
     /**
      * Process HEAD request. This returns the same headers as GET request, but without content.
+     *
      * @see HttpServlet#doHead(HttpServletRequest, HttpServletResponse).
      */
     protected void doHead(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         // Process request without content.
         processRequest(request, response, false);
     }
 
     /**
      * Process GET request.
+     *
      * @see HttpServlet#doGet(HttpServletRequest, HttpServletResponse).
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         // Process request with content.
         processRequest(request, response, true);
     }
 
     /**
      * Process the actual request.
-     * @param request The request to be processed.
+     *
+     * @param request  The request to be processed.
      * @param response The response to be created.
-     * @param content Whether the request body should be written (GET) or not (HEAD).
+     * @param content  Whether the request body should be written (GET) or not (HEAD).
      * @throws IOException If something fails at I/O level.
      */
     private void processRequest
-        (HttpServletRequest request, HttpServletResponse response, boolean content)
-            throws IOException
-    {
+    (HttpServletRequest request, HttpServletResponse response, boolean content)
+            throws IOException {
         // Validate the requested file ------------------------------------------------------------
 
         // Get requested file by path info.
@@ -280,7 +278,7 @@ public class FileServlet extends HttpServlet {
             String acceptEncoding = request.getHeader("Accept-Encoding");
             acceptsGzip = acceptEncoding != null && accepts(acceptEncoding, "gzip");
             contentType += ";charset=UTF-8";
-        } 
+        }
 
         // Else, expect for images, determine content disposition. If content type is supported by
         // the browser, then set to inline, else attachment which will pop a 'save as' dialogue.
@@ -383,37 +381,40 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Returns true if the given accept header accepts the given value.
+     *
      * @param acceptHeader The accept header.
-     * @param toAccept The value to be accepted.
+     * @param toAccept     The value to be accepted.
      * @return True if the given accept header accepts the given value.
      */
     private static boolean accepts(String acceptHeader, String toAccept) {
         String[] acceptValues = acceptHeader.split("\\s*(,|;)\\s*");
         Arrays.sort(acceptValues);
         return Arrays.binarySearch(acceptValues, toAccept) > -1
-            || Arrays.binarySearch(acceptValues, toAccept.replaceAll("/.*$", "/*")) > -1
-            || Arrays.binarySearch(acceptValues, "*/*") > -1;
+                || Arrays.binarySearch(acceptValues, toAccept.replaceAll("/.*$", "/*")) > -1
+                || Arrays.binarySearch(acceptValues, "*/*") > -1;
     }
 
     /**
      * Returns true if the given match header matches the given value.
+     *
      * @param matchHeader The match header.
-     * @param toMatch The value to be matched.
+     * @param toMatch     The value to be matched.
      * @return True if the given match header matches the given value.
      */
     private static boolean matches(String matchHeader, String toMatch) {
         String[] matchValues = matchHeader.split("\\s*,\\s*");
         Arrays.sort(matchValues);
         return Arrays.binarySearch(matchValues, toMatch) > -1
-            || Arrays.binarySearch(matchValues, "*") > -1;
+                || Arrays.binarySearch(matchValues, "*") > -1;
     }
 
     /**
      * Returns a substring of the given string value from the given begin index to the given end
      * index as a long. If the substring is empty, then -1 will be returned
-     * @param value The string value to return a substring as long for.
+     *
+     * @param value      The string value to return a substring as long for.
      * @param beginIndex The begin index of the substring to be returned as long.
-     * @param endIndex The end index of the substring to be returned as long.
+     * @param endIndex   The end index of the substring to be returned as long.
      * @return A substring of the given string value as long or -1 if substring is empty.
      */
     private static long sublong(String value, int beginIndex, int endIndex) {
@@ -423,15 +424,15 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Copy the given byte range of the given input to the given output.
-     * @param input The input to copy the given range to the given output for.
+     *
+     * @param input  The input to copy the given range to the given output for.
      * @param output The output to copy the given range from the given input for.
-     * @param start Start of the byte range.
+     * @param start  Start of the byte range.
      * @param length Length of the byte range.
      * @throws IOException If something fails at I/O level.
      */
     private static void copy(RandomAccessFile input, OutputStream output, long start, long length)
-        throws IOException
-    {
+            throws IOException {
         byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
         int read;
 
@@ -458,6 +459,7 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Close the given resource.
+     *
      * @param resource The resource to be closed.
      */
     private static void close(Closeable resource) {
@@ -484,8 +486,9 @@ public class FileServlet extends HttpServlet {
 
         /**
          * Construct a byte range.
+         *
          * @param start Start of the byte range.
-         * @param end End of the byte range.
+         * @param end   End of the byte range.
          * @param total Total length of the byte source.
          */
         public Range(long start, long end, long total) {

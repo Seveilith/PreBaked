@@ -27,7 +27,7 @@ public class ProductBroker extends Broker {
             preparedStatement.setInt(1, product.getId());
             preparedStatement.setString(2, product.getProductName());
             preparedStatement.setString(3, product.getProductDescription());
-            preparedStatement.setInt(4,product.getProductPrice());
+            preparedStatement.setInt(4, product.getProductPrice());
             preparedStatement.setInt(5, product.getProductQuantity());
 
             preparedStatement.executeUpdate();
@@ -78,14 +78,13 @@ public class ProductBroker extends Broker {
 
 
     @Override
-    public List<DataTransferObject> find(DataTransferObject obj){
+    public List<DataTransferObject> find(DataTransferObject obj) {
         List<DataTransferObject> temp = new ArrayList<>();
 
         temp.add(getFromStorage(obj.getId(), DbConnect.getConnection()));
 
         return temp;
     }
-
 
 
     @Override
@@ -99,7 +98,7 @@ public class ProductBroker extends Broker {
             preparedStatement.setObject(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
                 productData.setId(rs.getInt("ProductID"));
                 productData.setProductName(rs.getString("ProductName"));
                 productData.setProductDescription(rs.getString("ProductDescription"));

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name="product", urlPatterns={"/product"})
+@WebServlet(name = "product", urlPatterns = {"/product"})
 public class ProductServlet extends HttpServlet {
 
     public ProductServlet() {
@@ -23,11 +23,12 @@ public class ProductServlet extends HttpServlet {
 
     //// Kan inte utföra något efter redirect
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DomainFacade.instance().answer(response,request,this);
-        DataFacade.instance().answer(response,request, this);
+        DomainFacade.instance().answer(response, request, this);
+        DataFacade.instance().answer(response, request, this);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
 }
 
 

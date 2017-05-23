@@ -6,11 +6,11 @@ import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Admin extends DomainObject{
+public class Admin extends DomainObject {
 
     private AdminData data;
 
-    public Admin(){
+    public Admin() {
         data = new AdminData();
     }
 
