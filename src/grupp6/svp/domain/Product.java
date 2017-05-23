@@ -5,17 +5,12 @@ import grupp6.svp.data.DataTransferObjects.ProductData;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by malinvagnborg on 2017-05-08.
- */
-public class Product extends DomainObject
-{
+public class Product extends DomainObject {
 
     private ProductData data;
 
     public Product(){
         data = new ProductData();
-
     }
 
     public DataTransferObject delete(int id){
@@ -24,13 +19,9 @@ public class Product extends DomainObject
         return data;
     }
 
-    public void find(){
+    public void find(){}
 
-    }
-
-    public void insert(){
-
-    }
+    public void insert(){}
 
 
     @Override

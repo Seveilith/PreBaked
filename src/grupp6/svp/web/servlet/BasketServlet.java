@@ -13,9 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import grupp6.svp.web.EnumPage;
 import grupp6.svp.web.PageFactory;
-/**
- * Created by LinnPettersson on 2017-05-03.
- */
+
 @WebServlet(name="basket", urlPatterns={"/basket"})
 public class BasketServlet extends HttpServlet {
 
@@ -42,7 +40,6 @@ public class BasketServlet extends HttpServlet {
                 "</ul>\n" +
                 "</body></html>");
 
-        DomainFacade.instance().createBalloon(request.getParameter("balloon_Id"), request.getParameter("balloon_col"));
 
     }
 

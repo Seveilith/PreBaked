@@ -6,9 +6,6 @@ import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by malinvagnborg on 2017-05-08.
- */
 public class Admin extends DomainObject{
 
     private AdminData data;

@@ -4,13 +4,11 @@ import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-/**
- * Created by malinvagnborg on 2017-05-08.
- */
+
 public class Basket extends DomainObject{
 
-    HashMap<String, Integer> basketItems;
-    public Basket(){
+    private HashMap<String, Integer> basketItems;
+    Basket(){
     }
     public HashMap getBasketItems(){
         return basketItems;

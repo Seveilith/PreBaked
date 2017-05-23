@@ -2,24 +2,14 @@ package grupp6.svp.data.Persistence;
 
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DbConnect;
-import sun.security.util.ObjectIdentifier;
-
-import java.io.ObjectInput;
 import java.sql.Connection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
-/**
- * Created by alo on 2017-05-03.
- */
 public abstract class Broker {
 
-    protected HashMap<Integer, Object> cache = new HashMap<Integer,Object>();
+    DbConnect dbCon;
 
-    protected DbConnect dbCon;
-
-    public Broker(){
+    Broker(){
         dbCon = new DbConnect();
     }
 

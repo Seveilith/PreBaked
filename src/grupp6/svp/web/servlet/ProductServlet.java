@@ -14,38 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-/**
- * Created by LinnPettersson on 2017-05-10.
- */
 @WebServlet(name="product", urlPatterns={"/product"})
 public class ProductServlet extends HttpServlet {
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ProductServlet() {
         super();
     }
 
-
-    //// TANKEN ÄR ATT VI HÄR BARA SKA SKICKA VIDARE RESPONSE OCH REQUEST TILL RÄTT STÄLLE ALLTSÅ RÄTT FASAD, DENNA SKA SEDAN DELEGERA UPPGIFTEN
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+    //// Kan inte utföra något efter redirect
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DomainFacade.instance().answer(response,request,this);
         DataFacade.instance().answer(response,request, this);
-
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 }
 
 

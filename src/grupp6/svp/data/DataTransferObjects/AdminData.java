@@ -1,15 +1,9 @@
 package grupp6.svp.data.DataTransferObjects;
 
-/**
- * Created by alo on 2017-05-08.
- */
 public class AdminData extends DataTransferObject {
 
     private int AdminID;
-    private String AdminFirstName;
-    private String AdminLastName;
-    private String AdminMail;
-    private String AdminPassword;
+    private String AdminFirstName, AdminLastName, AdminMail, AdminPassword;
 
     public void setAdminID(int adminID) {
         AdminID = adminID;

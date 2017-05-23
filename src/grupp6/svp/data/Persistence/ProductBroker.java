@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by alo on 2017-05-08.
- */
 public class ProductBroker extends Broker {
 
     @Override
@@ -46,10 +43,6 @@ public class ProductBroker extends Broker {
 
     @Override
     public void delete(DataTransferObject obj, Connection con) {
-        if (cache.containsKey(obj.getId())) {
-            cache.remove(obj);
-        }
-
         PreparedStatement preparedStatement = null;
 
         String deleteSQL = "DELETE FROM pgiei02.Product WHERE ProductID = ?";
@@ -78,7 +71,7 @@ public class ProductBroker extends Broker {
             }
 
             if (con != null) {
-                dbCon.returnConnection(con);
+                DbConnect.returnConnection(con);
             }
         }
     }
@@ -87,13 +80,8 @@ public class ProductBroker extends Broker {
     @Override
     public List<DataTransferObject> find(DataTransferObject obj){
         List<DataTransferObject> temp = new ArrayList<>();
-        if (cache.containsKey(obj.getId())) {
-            temp.add((DataTransferObject) cache.get(obj.getId()));
-            return temp;
-        }
 
-        temp.add(getFromStorage(obj.getId(), dbCon.getConnection()));
-        cache.put(obj.getId(), obj);
+        temp.add(getFromStorage(obj.getId(), DbConnect.getConnection()));
 
         return temp;
     }
@@ -119,7 +107,7 @@ public class ProductBroker extends Broker {
                 productData.setProductQuantity(rs.getInt("ProductQuantity"));
             }
 
-            dbCon.returnConnection(con);
+            DbConnect.returnConnection(con);
         } catch (SQLException e) {
             e.printStackTrace();
         }

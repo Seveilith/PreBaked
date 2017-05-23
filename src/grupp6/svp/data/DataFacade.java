@@ -2,43 +2,21 @@ package grupp6.svp.data;
 
 import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.domain.*;
-
 import java.io.IOException;
 import java.util.*;
-
 import grupp6.svp.data.Persistence.*;
 import grupp6.svp.web.ElementBuilder;
-import grupp6.svp.web.EnumPage;
-import grupp6.svp.web.PageFactory;
 import grupp6.svp.web.servlet.*;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
 
 public class DataFacade {
 
-//	public static Product getProduct(int productId){
-//		return
-//	}
-
-//	public static void register(User user) {
-//		users.put(user.username, user);
-//	}
-//
-//
-//	public static User getUser(String username){
-//		return users.get(username);
-//	}
-
 	private static DataFacade instance = null;
-	protected HashMap<Class<?>, DataTransferObject> servlets = new HashMap<>();
-	/**
-	 *
-	 * @return
-	 */
+	private HashMap<Class<?>, DataTransferObject> servlets = new HashMap<>();
+
 	public static DataFacade instance(){
 
 		if(instance == null)
@@ -47,26 +25,16 @@ public class DataFacade {
 		return instance;
 	}
 
-	protected PFacade per;
+	private PFacade per;
 
 	public void register(){
 		per = new PFacade();
 		per.register(AdminData.class, new AdminBroker());
-		per.register(BasketData.class, new BasketBroker());
-		per.register(BasketProductsData.class, new BasketProductsBroker());
-		per.register(CustomerData.class, new CustomerBroker());
-		per.register(DesignerData.class, new DesignerBroker());
-		per.register(DesignerOrderData.class, new DesignerOrdersBroker());
-		per.register(OrderData.class, new OrderBroker());
-		per.register(OrderedProductData.class, new OrderedProductBroker());
 		per.register(ProductData.class, new ProductBroker());
 	}
 
-	public DataTransferObject getDTO(HttpServlet servlet){
-		servlets.put(AdminServlet.class, new AdminData());
+	private DataTransferObject getDTO(HttpServlet servlet){
 		servlets.put(BasketServlet.class, new BasketData());
-		servlets.put(CustomerServlet.class, new CustomerData());
-		servlets.put(DesignerServlet.class, new DesignerData());
 		servlets.put(ProductServlet.class, new ProductData());
 
         return servlets.get(servlet.getClass());
@@ -79,25 +47,20 @@ public class DataFacade {
 		if (request.getParameter("operation").equals("delete")){
 			delete(obj);
             try {
-                response.sendRedirect("productPage.jsp");
+				response.sendRedirect("admin.jsp");
 				ElementBuilder.addDeleteMsg(request,response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+
+
+            } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
         }
 
-		if (request.getParameter("operation").equals("find")){
-			find(obj);
-		}
+		if (request.getParameter("operation").equals("find")) find(obj);
     }
 
 	public List<DataTransferObject> find(DataTransferObject dto){
-
-        List<DataTransferObject> result = per.find(dto);
-
-		return result;
+		return per.find(dto);
 	}
 
 	public void delete(DataTransferObject dto){
@@ -109,12 +72,11 @@ public class DataFacade {
         per.insert(dto);
     }
 
-
-
 	/** === USERS ===
 	 * This part of the facade handles construction of ghost users
 	**/
-	private static HashMap<String, User> users = new HashMap<String, User>();
+	private static HashMap<String, User> users = new HashMap<>();
+
 	static { //Add, remove, or edit Users for the system here
 		new User("Test", "Test");
 		new User("Admin01", "Test");
@@ -130,8 +92,7 @@ public class DataFacade {
 	 * @param user a user object that wants to be registered in the data facade.
 	 */
 	public static void register(User user) {
-		users.put(user.username, user);
-
+		users.put(user.getUsername(), user);
 	}
 	
 	/**
@@ -141,40 +102,4 @@ public class DataFacade {
 	 * @return 			returns a user object identifed from the username inserted, if the user dosn't exist null is returned.
 	 */
 	public static User getUser(String username){return users.get(username);}
-	
-	/** === ACTIVITY ===
-	 * This part of the facade handles construction of ghost activities
-	**/
-	private static HashMap<User, List<Activity>> activitites = new HashMap<User, List<Activity>>();
-	static { //Add, remove, or edit Users for the system here
-		Random rand = new Random();
-		for(int i = 0; i < 18; i++)
-			new Activity("Test", RandomHelper.randDate(), RandomHelper.randWords(rand.nextInt(20)+5), RandomHelper.randWords(rand.nextInt(20)+5));
-		
-	}
-	
-	/**
-	 * 
-	 * 
-	 * 
-	 * @param user
-	 * @param activity
-	 */
-	public static void register(User user, Activity activity) {
-		if(!activitites.containsKey(user))
-			activitites.put(user, new ArrayList<Activity>());
-		List<Activity> list = activitites.get(user);
-		list.add(activity);
-	}
-	/**
-	 * 
-	 * 
-	 * 
-	 * @param user
-	 * @return
-	 */
-	public static List<Activity> getActivity(User user){
-		return activitites.get(user);
-	}
-	
 }
