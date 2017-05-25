@@ -4,6 +4,7 @@ import grupp6.svp.data.DataFacade;
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DbConnect;
 
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,8 +21,6 @@ public class PFacade {
     public List<DataTransferObject> find(DataTransferObject data) {
         Broker broker = brokers.get(data.getClass());
 
-        System.out.println("HERRO");
-
         return broker.find(data);
     }
 
@@ -35,5 +34,11 @@ public class PFacade {
         Broker broker = brokers.get(data.getClass());
 
         broker.insert(data, DbConnect.getConnection());
+    }
+
+    public List<DataTransferObject> getAllFromStorage(DataTransferObject data){
+        Broker broker = brokers.get(data.getClass());
+
+        return broker.getAllFromStorage(DbConnect.getConnection());
     }
 }

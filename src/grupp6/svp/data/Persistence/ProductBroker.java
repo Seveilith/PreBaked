@@ -7,6 +7,7 @@ import sun.security.util.ObjectIdentifier;
 import grupp6.svp.domain.*;
 
 import javax.xml.crypto.Data;
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,14 +51,10 @@ public class ProductBroker extends Broker {
         try {
             con = DbConnect.getConnection();
             preparedStatement = con.prepareStatement(deleteSQL);
-            System.out.println(obj.getId());
             preparedStatement.setInt(1, obj.getId());
 
             // execute delete SQL stetement
             preparedStatement.executeUpdate();
-
-            System.out.println("Record is deleted!");
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -111,5 +108,33 @@ public class ProductBroker extends Broker {
             e.printStackTrace();
         }
         return productData;
+    }
+
+    public List<DataTransferObject> getAllFromStorage(Connection con){
+
+        List<DataTransferObject> products = new ArrayList<>();
+        String sqlSelectAll = "SELECT * FROM pgiei02.Product";
+
+        Statement stmt = null;
+
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlSelectAll);
+
+            while (rs.next()){
+                ProductData data = new ProductData();
+                data.setId(rs.getInt("ProductID"));
+                data.setProductName(rs.getString("ProductName"));
+                data.setProductDescription(rs.getString("ProductDescription"));
+                data.setProductPrice(rs.getInt("ProductPrice"));
+                data.setProductQuantity(rs.getInt("ProductQuantity"));
+
+                products.add(data);
+            }
+        return products;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

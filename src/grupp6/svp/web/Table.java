@@ -1,10 +1,5 @@
 package grupp6.svp.web;
 
-/**
- * This is a stupid helper class to easier build table in HTML... it does so with out any tests...
- *
- * @author joncr49
- */
 public class Table {
 
     private int clms = 0;

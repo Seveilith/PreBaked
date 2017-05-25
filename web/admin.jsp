@@ -10,7 +10,6 @@
 <%
     // Kontrollerar om användaren som kommer åt sidan är inloggad eller inte.
     String username = (String)request.getSession().getAttribute("Username");
-    System.out.println("Current username: " + username);
 
     if (username == null) {
         System.out.println("PreBaked: Username is not defined -> User is not logged in! Redirecting to index.jsp");

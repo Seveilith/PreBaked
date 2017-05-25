@@ -3,6 +3,7 @@ package grupp6.svp.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,6 +37,9 @@ public class PageFactory {
                     break;
                 case USER_HOME:
                     user(request, response);
+                    break;
+                case PRODUCTS:
+                    products(request, response);
                     break;
                 default:
                     break;
@@ -95,5 +99,12 @@ public class PageFactory {
 
         ElementBuilder.addFooter(request, response);
         ElementBuilder.addEnd(output);
+    }
+
+    private void products(HttpServletRequest request, HttpServletResponse response) throws  IOException, ServletException {
+        response.setContentType("text/html");
+        PrintWriter output = response.getWriter();
+
+        ElementBuilder.addProducts(request, response, output);
     }
 }

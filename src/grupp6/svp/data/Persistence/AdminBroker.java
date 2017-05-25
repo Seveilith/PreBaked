@@ -21,6 +21,11 @@ public class AdminBroker extends Broker {
     }
 
     @Override
+    public List<DataTransferObject> getAllFromStorage(Connection con) {
+        return null;
+    }
+
+    @Override
     public void update(DataTransferObject object) {
         AdminData admin = (AdminData) object;
 

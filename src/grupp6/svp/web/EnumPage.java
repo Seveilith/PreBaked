@@ -35,4 +35,6 @@ public enum EnumPage {
      */
     USER_HOME,
 
+    PRODUCTS,
+
 }

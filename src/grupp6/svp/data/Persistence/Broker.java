@@ -24,5 +24,6 @@ public abstract class Broker {
 
     public abstract DataTransferObject getFromStorage(int id, Connection con); //id: ObjectIdentifier
 
+    public abstract List<DataTransferObject> getAllFromStorage(Connection con);
 
 }

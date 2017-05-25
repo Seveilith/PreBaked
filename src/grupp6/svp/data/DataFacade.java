@@ -4,6 +4,7 @@ import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.domain.*;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.*;
 
 import grupp6.svp.data.Persistence.*;
@@ -64,6 +65,10 @@ public class DataFacade {
 
     public List<DataTransferObject> find(DataTransferObject dto) {
         return per.find(dto);
+    }
+
+    public List<DataTransferObject> getAllFromStorage(DataTransferObject dto) {
+        return per.getAllFromStorage(dto);
     }
 
     public void delete(DataTransferObject dto) {

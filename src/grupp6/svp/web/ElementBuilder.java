@@ -49,13 +49,31 @@ public class ElementBuilder {
         output.append("<div class=\"deletemsg\">");
         output.append("<p> Deleted row</p>");
         output.append("</div>");
-
-        System.out.println("I ADD DELETE");
     }
 
     static void addEnd(PrintWriter output) {
         output.append("</body>");
         output.append("</html>");
+    }
+
+    public static void addProducts(HttpServletRequest request, HttpServletResponse response, PrintWriter output) throws ServletException, IOException {
+        output.append("<table style=\"width:100%\">\n" +
+                "  <tr>\n" +
+                "    <th>Firstname</th>\n" +
+                "    <th>Lastname</th> \n" +
+                "    <th>Age</th>\n" +
+                "  </tr>\n" +
+                "  <tr>\n" +
+                "    <td>Jill</td>\n" +
+                "    <td>Smith</td> \n" +
+                "    <td>50</td>\n" +
+                "  </tr>\n" +
+                "  <tr>\n" +
+                "    <td>Eve</td>\n" +
+                "    <td>Jackson</td> \n" +
+                "    <td>94</td>\n" +
+                "  </tr>\n" +
+                "</table>");
     }
 
     /**

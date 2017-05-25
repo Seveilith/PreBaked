@@ -12,7 +12,6 @@ public class DbConnect {
     static {
         try {
             Class.forName(MYSQL_DRIVER);
-            System.out.println("Class Loaded....");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -20,12 +19,9 @@ public class DbConnect {
 
     public static Connection getConnection() {
         Connection con = conStack.poll();
-        System.out.println(conStack.size());
-
         if (con == null)
             try {
                 con = DriverManager.getConnection(MYSQL_URL, "pgiei02", "w3baU9tfF6,I");
-                System.out.println("Connected to db...");
                 return con;
             } catch (SQLException e) {
                 e.printStackTrace();

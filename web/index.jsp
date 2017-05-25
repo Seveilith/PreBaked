@@ -3,25 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>PreBaked</title>
-    <link rel='stylesheet' type='text/css' href='./files/css/style.css'>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Bootstrap core CSS -->
-    <link href="./files/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="./files/css/landing-page.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="./files/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-          type="text/css">
-
+<%@ include file="head.jsp"%>
     <!-- Temporary navbar container fix -->
     <style>
         .navbar-toggler {
@@ -41,14 +23,19 @@
 <!--HEADER-->
 <header class="site-header" id="masthead">
     <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="container">
-            <a class="navbar-brand" href="./" rel="index"><img class="loga"
-                                                               src="files/img/logo.png"
-                                                               alt="Loga"></a>
+            <a class="navbar-brand" href="" rel="index"><img class="loga"
+                                                             src="files/img/logo.png"
+                                                             alt="Loga"></a>
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto" id="nav-primary">
                     <li class="nav-item">
-                        <a class="nav-link" href="productPage.jsp" title="Produkter">Produkter</a>
+                        <a class="nav-link" href="/product" title="Produkter">Produkter</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="basket.jsp" title="Varukorg">Varukorg</a>
@@ -102,7 +89,7 @@
                 <p class="lead">Just tell us what you want you want, and we will deliver!</p>
             </div>
             <div class="col-lg-5 offset-lg-2">
-                <img class="img-fluid" src="./files/img/ipad.png" alt="missing img">
+                <img class="img-fluid" src="files/img/ipad.png" alt="missing img">
             </div>
         </div>
     </div><!-- /.container -->
@@ -120,7 +107,7 @@
                     download some of their awesome, free photoshop actions!</p>
             </div>
             <div class="col-lg-5 pull-lg-5">
-                <img class="img-fluid" src="./files/img/dog.png" alt="">
+                <img class="img-fluid" src="files/img/dog.png" alt="">
             </div>
         </div>
     </div><!-- /.container -->
@@ -139,7 +126,7 @@
                     Awesome</a>.</p>
             </div>
             <div class="col-lg-5 offset-lg-2">
-                <img class="img-fluid" src="./files/img/phones.png" alt="">
+                <img class="img-fluid" src="files/img/phones.png" alt="">
             </div>
         </div>
     </div><!-- /.container -->
@@ -196,9 +183,9 @@
 </footer>
 
 <!-- Bootstrap core JavaScript -->
-<script src="./files/vendor/jquery/jquery.min.js"></script>
-<script src="./files/vendor/tether/tether.min.js"></script>
-<script src="./files/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="files/vendor/jquery/jquery.min.js"></script>
+<script src="files/vendor/tether/tether.min.js"></script>
+<script src="files/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>
