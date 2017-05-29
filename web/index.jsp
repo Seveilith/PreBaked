@@ -71,9 +71,9 @@
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
                 <h1 class="section-heading text-white">Accelerate Your Experience</h1>
-                <p class="lead text-white">Our product features the innovative new technology that delivers breakthrough speed
+                <p class="lead text-white">Our product features the innovative new Optane Technology from Intel that delivers breakthrough speed
                     and uncompromised storage capacity. </p><br>
-                <button class="button" href="http://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html">Learn More</button>
+                <a class="btn btn-default" href="http://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html">Learn More</a>
             </div>
         </div>
     </div><!-- /.container -->
@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h2>Connect to Start Bootstrap:</h2>
+                <h2>Connect with PreBaked:</h2>
             </div>
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
@@ -117,8 +117,8 @@
                                 class="network-name">Github</span></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span
-                                class="network-name">Linkedin</span></a>
+                        <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-facebook fa-fw"></i> <span
+                                class="network-name">Facebook</span></a>
                     </li>
                 </ul>
             </div>
