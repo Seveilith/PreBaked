@@ -1,6 +1,8 @@
 package grupp6.svp.data.DataTransferObjects;
 
-public abstract class DataTransferObject {
+import java.io.Serializable;
+
+public abstract class DataTransferObject implements Serializable{
 
     public abstract int getId();
 

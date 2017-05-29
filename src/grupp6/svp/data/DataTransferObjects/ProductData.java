@@ -1,6 +1,7 @@
 package grupp6.svp.data.DataTransferObjects;
 
 public class ProductData extends DataTransferObject {
+    private static final long serialVersionUID = 1L;
     private int productId, productPrice, productQuantity;
     private String productName, productDescription;
 

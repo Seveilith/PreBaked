@@ -18,7 +18,7 @@ public class PFacade {
         brokers.put(cls, broker);
     }
 
-    public List<DataTransferObject> find(DataTransferObject data) {
+    public DataTransferObject find(DataTransferObject data) {
         Broker broker = brokers.get(data.getClass());
 
         return broker.find(data);

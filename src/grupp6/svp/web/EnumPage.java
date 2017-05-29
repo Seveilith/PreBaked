@@ -33,7 +33,7 @@ public enum EnumPage {
      * Page where user important information is displayed. This page is generated
      * and will only show if the user is online.
      */
-    USER_HOME,
+    ADMIN,
 
     PRODUCTS,
 

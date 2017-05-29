@@ -2,12 +2,13 @@ package grupp6.svp.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import grupp6.svp.data.DataTransferObjects.ProductData;
 import grupp6.svp.domain.DomainFacade;
 
 public class PageFactory {
@@ -35,11 +36,11 @@ public class PageFactory {
                     DomainFacade.logout(session);
                     this.answer(request, response, EnumPage.HOME);
                     break;
-                case USER_HOME:
-                    user(request, response);
-                    break;
                 case PRODUCTS:
                     products(request, response);
+                    break;
+                case ADMIN:
+                    admin(request, response);
                     break;
                 default:
                     break;
@@ -63,48 +64,53 @@ public class PageFactory {
         if (username.indexOf('@') >= 0) {
             response.sendRedirect("customer.jsp");
         } else if (username.charAt(5) == '0') {
-            response.sendRedirect("admin.jsp");
+            response.sendRedirect("/admin");
         } else if (username.charAt(5) == '1') {
             response.sendRedirect("designer.jsp");
         }
-        //response.sendRedirect("index.jsp");
     }
 
-    private void user(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("Username");
-        if (username == null) {
-            response.sendRedirect("login_failed.jsp"); //Some is trying to access a login restricted page without begin logged in, we redirect to login_failed.jsp
-            return;
-        }
-
-
-        response.setContentType("text/html"); //Divider between Logic & Page Building
-
-        PrintWriter output = response.getWriter();
-        ElementBuilder.addHead(output, "Title - You are logged in!");
-        ElementBuilder.addHeader(request, response);
-
-        output.append("<div class=\"mainContainer\">");
-
-        //ADD CONTENT HERE! :) Sample page;
-        ElementBuilder.addLeftPanel(output, ElementBuilder.getMenu());
-
-        Table table = new Table();
-        table.addHeader("Date", "Activity", "Notes");
-
-        ElementBuilder.addCenterPanel(output, "<h1>Activities for " + username + "!</h1>" + table.tabulate());
-
-        output.append("</div>");
-
-        ElementBuilder.addFooter(request, response);
-        ElementBuilder.addEnd(output);
-    }
-
-    private void products(HttpServletRequest request, HttpServletResponse response) throws  IOException, ServletException {
+    private void products(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<ProductData> products = (ArrayList<ProductData>) request.getAttribute("products");
         response.setContentType("text/html");
-        PrintWriter output = response.getWriter();
 
-        ElementBuilder.addProducts(request, response, output);
+        PrintWriter out = response.getWriter();
+        ElementBuilder.addTop(out);
+        ElementBuilder.addHead(request, response);
+
+        ElementBuilder.addNavBar(request, response, out);
+        out.print("<div class=\"container\">");
+        out.print("<div class=\"table-responsive\">");
+        out.print("<table class=\"table\">");
+        out.print("<tr>");
+        out.print("<th>ProductName</th>");
+        out.print("<th>ProductDescription</th>");
+        out.print("<th>ProductPrice</th>");
+        out.print("<th>ProductQuantity</th></tr>");
+
+        if (products != null){
+            for (ProductData data : products){
+                out.print("<tr><td>" + data.getProductName() + "</td>");
+                out.print("<td>" + data.getProductDescription() + "</td>");
+                out.print("<td>" + data.getProductPrice() + "</td>");
+                out.print("<td>" + data.getProductQuantity() + "</td></tr>");
+            }
+            out.print("</table></div></div></body></html>");
+        }
+        ElementBuilder.addEnd(request, response, out);
+    }
+
+    private void admin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        ElementBuilder.addTop(out);
+        ElementBuilder.addHead(request, response);
+        ElementBuilder.addNavBar(request, response, out);
+        ElementBuilder.addWrapper(out);
+        ElementBuilder.addDeleteForm(out);
+        ElementBuilder.addInsertForm(out);
+        ElementBuilder.endWrapper(out);
+        ElementBuilder.addEnd(request, response, out);
     }
 }

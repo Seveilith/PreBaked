@@ -12,80 +12,58 @@ public class ElementBuilder {
     /**
      * CONTAINERS
      **/
-    public static void addHead(PrintWriter output, String title) {
-        output.append("<html>");
-        output.append("<head>");
-        output.append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">");
-        output.append("<title>" + title + "</title>");
-        output.append("<link rel='stylesheet' type='text/css' href='./files/css/style.css'>");
-        output.append("</head>");
-        output.append("<body>");
+    public static void addTop(PrintWriter output){
+        output.print("<!DOCTYPE html>\n" +
+                "<html lang=\"en\">");
     }
 
-    public static void addHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/header.jsp").include(request, response);
+    public static void addHead(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/head.jsp").include(request, response);
     }
 
-    static void addLeftPanel(PrintWriter output, String content) {
-        output.append("<div class=\"leftPanel\">");
-        output.append(content);
-        output.append("</div>");
+    public static void addNavBar(HttpServletRequest request, HttpServletResponse response, PrintWriter out)throws ServletException, IOException{
+        request.getRequestDispatcher("/navbar.jsp").include(request, response);
     }
 
-    static void addCenterPanel(PrintWriter output, String content) {
-        output.append("<div class=\"centerPanel\">");
-        output.append(content);
-        output.append("</div>");
+    public static void addEnd(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws ServletException, IOException{
+        request.getRequestDispatcher("footer.jsp").include(request,response);
+        out.print("</body>");
+        out.append("</html>");
     }
 
-    static void addFooter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/footer.jsp").include(request, response);
+    public static void addInsertForm(PrintWriter out) {
+        out.print("<form action=\"admin\" method=\"POST\">");
+        out.print("<table class=\"product_input\">");
+        out.print("<h2>Mata in en ny produkt</h2>");
+        out.print("<tr>");
+        out.print("<th>ID:</th>");
+        out.print("<th>Produktnamn:</th>");
+        out.print("<th>Beskrivning:</th>");
+        out.print("<th>Pris:</th>");
+        out.print("<th>Antal i lager:</th></tr>");
+        out.print("<tr>");
+        out.print("<td><input type=\"text\" name=\"id\" placeholder=\"ProductId\"></td>");
+        out.print("<td><input type=\"text\" name=\"name\" placeholder=\"Name\" value=\"\" ></td>");
+        out.print("<td><input type=\"text\" name=\"description\" placeholder=\"Description\"></td>");
+        out.print("<td><input type=\"text\" name=\"price\" placeholder=\"Price\"></td>");
+        out.print("<td><input type=\"text\" name=\"quantity\" placeholder=\"Quantity\"></td>");
+        out.print("<td><input type =\"hidden\" name=\"operation\" value=\"insert\"></td></tr></table>");
+        out.print("<input type=\"submit\" value=\"Submit\"></form>");
     }
 
-    public static void addDeleteMsg(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter output = response.getWriter();
-        response.setContentType("text/html");
-
-        output.append("<div class=\"deletemsg\">");
-        output.append("<p> Deleted row</p>");
-        output.append("</div>");
+    public static void addDeleteForm(PrintWriter out) {
+        out.print("<h2>Delete Product </h2>");
+        out.print("<form action=\"admin\" method=\"POST\">");
+        out.print("<input type=\"text\" name=\"id\">");
+        out.print("<input type=\"hidden\" name=\"operation\" value=\"delete\">");
+        out.print("<input type=\"submit\" value=\"Delete\"></form>");
     }
 
-    static void addEnd(PrintWriter output) {
-        output.append("</body>");
-        output.append("</html>");
+    public static void addWrapper(PrintWriter out) {
+        out.print("<div class=\"container\">");
     }
 
-    public static void addProducts(HttpServletRequest request, HttpServletResponse response, PrintWriter output) throws ServletException, IOException {
-        output.append("<table style=\"width:100%\">\n" +
-                "  <tr>\n" +
-                "    <th>Firstname</th>\n" +
-                "    <th>Lastname</th> \n" +
-                "    <th>Age</th>\n" +
-                "  </tr>\n" +
-                "  <tr>\n" +
-                "    <td>Jill</td>\n" +
-                "    <td>Smith</td> \n" +
-                "    <td>50</td>\n" +
-                "  </tr>\n" +
-                "  <tr>\n" +
-                "    <td>Eve</td>\n" +
-                "    <td>Jackson</td> \n" +
-                "    <td>94</td>\n" +
-                "  </tr>\n" +
-                "</table>");
-    }
-
-    /**
-     * CONTENT
-     **/
-    static String getMenu() {
-        String menu = "<div class=\"menu\">";
-        menu += "<p><a href='login'>Home</a><br></p>";
-        menu += "<p><a href='user'>User Home</a><br></p>";
-        menu += "<p><a href='logout'>Logout</a></p>"; //"Logout"
-
-        menu += "</div>";
-        return menu;
+    public static void endWrapper(PrintWriter out) {
+        out.print("</div>");
     }
 }

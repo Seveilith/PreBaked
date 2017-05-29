@@ -16,7 +16,7 @@ public abstract class Broker {
 
     public abstract void insert(DataTransferObject object, Connection con);
 
-    public abstract List<DataTransferObject> find(DataTransferObject obj);
+    public abstract DataTransferObject find(DataTransferObject obj);
 
     public abstract void update(DataTransferObject object);
 

@@ -1,7 +1,9 @@
 package grupp6.svp.data.DataTransferObjects;
 
-public class AdminData extends DataTransferObject {
+import java.io.Serializable;
 
+public class AdminData extends DataTransferObject implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int AdminID;
     private String AdminFirstName, AdminLastName, AdminMail, AdminPassword;
 

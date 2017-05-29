@@ -7,5 +7,5 @@ import javax.servlet.http.HttpServletResponse;
 
 public abstract class DomainObject {
 
-    public abstract DataTransferObject create(HttpServletResponse response, HttpServletRequest request);
+    public abstract DataTransferObject create(HttpServletRequest request, HttpServletResponse response);
 }

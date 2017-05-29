@@ -16,7 +16,7 @@ public class AdminBroker extends Broker {
     }
 
     @Override
-    public List<DataTransferObject> find(DataTransferObject obj) {
+    public DataTransferObject find(DataTransferObject obj) {
         return null;
     }
 

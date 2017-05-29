@@ -23,6 +23,7 @@ public class ProductBroker extends Broker {
 
         ProductData product = (ProductData) object;
 
+
         try {
             PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
             preparedStatement.setInt(1, product.getId());
@@ -75,10 +76,8 @@ public class ProductBroker extends Broker {
 
 
     @Override
-    public List<DataTransferObject> find(DataTransferObject obj) {
-        List<DataTransferObject> temp = new ArrayList<>();
-
-        temp.add(getFromStorage(obj.getId(), DbConnect.getConnection()));
+    public DataTransferObject find(DataTransferObject obj) {
+        DataTransferObject temp = getFromStorage(obj.getId(), DbConnect.getConnection());
 
         return temp;
     }

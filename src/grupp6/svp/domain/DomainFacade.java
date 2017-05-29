@@ -20,32 +20,13 @@ public class DomainFacade {
         return instance;
     }
 
-    private HashMap<Class<?>, DomainObject> domserv = new HashMap<>();
-
-    private DomainObject getDTO(HttpServlet servlet) {
-        domserv.put(BasketServlet.class, new Basket());
-        domserv.put(ProductServlet.class, new Product());
-
-        return domserv.get(servlet.getClass());
+    public void insert(HttpServletRequest request, HttpServletResponse response, DomainObject newObject){
+        DataFacade.instance().insert(newObject.create(request, response));
     }
-
-    public void answer(HttpServletResponse response, HttpServletRequest request, HttpServlet servlet) {
-
-        DomainObject obj = getDTO(servlet);
-
-        if (request.getParameter("operation").equals("insert")) {
-            DataTransferObject dto = obj.create(response, request);
-
-            DataFacade.instance().insert(dto);
-        }
-    }
-
 
     public static boolean canLogin(String username, String password) {
         User user = DataFacade.getUser(username);
-
         return user != null && user.getUsername().equals(username) && user.getPassword().equals(password);
-
     }
 
     public static void logout(HttpSession session) {

@@ -38,15 +38,14 @@ public class DataFacade {
     }
 
     private DataTransferObject getDTO(HttpServlet servlet) {
-        servlets.put(BasketServlet.class, new BasketData());
         servlets.put(ProductServlet.class, new ProductData());
 
         return servlets.get(servlet.getClass());
     }
 
-    public void answer(HttpServletResponse response, HttpServletRequest request, HttpServlet servlet) {
-        DataTransferObject obj = getDTO(servlet);
-        obj.setId(Integer.parseInt(request.getParameter("id")));
+/*    public void answer(HttpServletResponse response, HttpServletRequest request, HttpServlet servlet) {
+        //DataTransferObject obj = getDTO(servlet);
+        //obj.setId(Integer.parseInt(request.getParameter("id")));
 
         if (request.getParameter("operation").equals("delete")) {
             delete(obj);
@@ -59,11 +58,9 @@ public class DataFacade {
                 e.printStackTrace();
             }
         }
+    }*/
 
-        if (request.getParameter("operation").equals("find")) find(obj);
-    }
-
-    public List<DataTransferObject> find(DataTransferObject dto) {
+    public DataTransferObject find(DataTransferObject dto) {
         return per.find(dto);
     }
 

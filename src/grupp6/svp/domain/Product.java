@@ -28,13 +28,14 @@ public class Product extends DomainObject {
 
 
     @Override
-    public DataTransferObject create(HttpServletResponse response, HttpServletRequest request) {
+    public DataTransferObject create(HttpServletRequest request, HttpServletResponse response) {
         data.setId(Integer.parseInt(request.getParameter("id")));
         data.setProductDescription(request.getParameter("description"));
         data.setProductName(request.getParameter("name"));
         data.setProductPrice(Integer.parseInt(request.getParameter("price")));
         data.setProductQuantity(Integer.parseInt(request.getParameter("quantity")));
 
+        System.out.println("I produkten DF: " + data.getProductName());
         return data;
     }
 }

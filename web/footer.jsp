@@ -1,4 +1,39 @@
-<!--FOOTER-->
-<div class="footer">
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis, est sed condimentum commodo, turpis tellus condimentum elit, vel imperdiet lorem nunc ac libero. Fusce aliquam ullamcorper est, vel ultricies massa elementum ac. In porttitor quam ex, in feugiat nibh luctus id. Nam auctor augue sed dolor aliquet, ut auctor mi efficitur. Praesent ante lectus, congue a mauris sed, dictum ornare nisi. Suspendisse nec orci eu ipsum venenatis sagittis. Donec ut suscipit lacus. Morbi enim tortor, fringilla ac nunc eu, commodo suscipit augue.</p>
-</div>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="/index.jsp">Home</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="/product">Products</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#about">About</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+        <p class="copyright text-muted small">Copyright &copy; PreBaked 2017. All Rights Reserved</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="files/vendor/jquery/jquery.min.js"></script>
+<script src="files/vendor/tether/tether.min.js"></script>
+<script src="files/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

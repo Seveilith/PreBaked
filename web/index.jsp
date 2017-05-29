@@ -3,60 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="head.jsp"%>
-    <!-- Temporary navbar container fix -->
-    <style>
-        .navbar-toggler {
-            z-index: 1;
-        }
-
-        @media (max-width: 576px) {
-            nav > .container {
-                width: 100%;
-            }
-        }
-    </style>
+    <%@ include file="head.jsp" %>
 </head>
 <body>
 
-
-<!--HEADER-->
-<header class="site-header" id="masthead">
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" href="" rel="index"><img class="loga"
-                                                             src="files/img/logo.png"
-                                                             alt="Loga"></a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto" id="nav-primary">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/product" title="Produkter">Produkter</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="basket.jsp" title="Varukorg">Varukorg</a>
-                    </li>
-
-                    <%
-                        String username = (String) request.getSession().getAttribute("Username");
-                        if (username == null) { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.jsp" title="Logga in">Logga in</a>
-                    </li>
-                    <% } else { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.jsp" title="Logga in">Logga ut</a>
-                    </li>
-                    <% } %>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<%@ include file="navbar.jsp"%>
 
 <!-- Header -->
 <header class="intro-header">
@@ -101,36 +52,53 @@
             <div class="col-lg-5 push-lg-7">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop
-                    actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to
-                    download some of their awesome, free photoshop actions!</p>
+                <h2 class="section-heading">Device Mockups<br>by PreBaked</h2>
+                <p class="lead">Turn your designs into high quality computing, products specified by you and made by our designers. For inspiration check out
+                    <a target="_blank" href="http://www.itpro.co.uk/mobile/21862/raspberry-pi-top-27-projects-to-try-yourself">IT-Pro</a>! Visit their website to
+                    get some design input and inspiration!</p>
             </div>
             <div class="col-lg-5 pull-lg-5">
-                <img class="img-fluid" src="files/img/dog.png" alt="">
+                <img class="img-fluid" src="files/img/team.png" alt="team-pic">
             </div>
         </div>
     </div><!-- /.container -->
 </section><!-- /.content-section-b -->
 
-<section class="content-section-a">
+<section class="content-section-a" id="section3">
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                <p class="lead">This template features the 'Lato' font, part of the <a target="_blank"
-                                                                                       href="http://www.google.com/fonts">Google
-                    Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font
-                    Awesome</a>.</p>
-            </div>
-            <div class="col-lg-5 offset-lg-2">
-                <img class="img-fluid" src="files/img/phones.png" alt="">
+                <h1 class="section-heading text-white">Accelerate Your Experience</h1>
+                <p class="lead text-white">Our product features the innovative new technology that delivers breakthrough speed
+                    and uncompromised storage capacity. </p><br>
+                <button class="button" href="http://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html">Learn More</button>
             </div>
         </div>
     </div><!-- /.container -->
 </section><!-- /.content-section-a -->
+
+<section class="content-section-b">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 push-lg-7">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <i class="fa fa-gift fa-3x" style="position: relative; left: 40%;" aria-hidden="true"></i>
+                <h4 class="section-heading">Free two-day delivery in Europe and US</h4>
+                <p class="lead">On in-stock items ordered by 5 p.m.</p>
+            </div>
+            <div class="col-lg-4 pull-lg-5">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <i class="fa fa-microchip fa-3x" style="position: relative; left: 40%;" aria-hidden="true"></i>
+                <h4 class="section-heading">Pick up at your PreBaked Store today</h4>
+                <p class="lead">Buy preBaked RaspBerry pi's online and pick up available items in an hour.</p>
+            </div>
+        </div>
+    </div><!-- /.container -->
+</section><!-- /.content-section-b -->
 
 <aside class="banner">
     <div class="container">
@@ -158,34 +126,6 @@
     </div><!-- /.container -->
 </aside><!-- /.banner -->
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <ul class="list-inline">
-            <li class="list-inline-item">
-                <a href="#">Home</a>
-            </li>
-            <li class="footer-menu-divider list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-                <a href="#about">About</a>
-            </li>
-            <li class="footer-menu-divider list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-                <a href="#services">Services</a>
-            </li>
-            <li class="footer-menu-divider list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-                <a href="#contact">Contact</a>
-            </li>
-        </ul>
-        <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
-    </div>
-</footer>
-
-<!-- Bootstrap core JavaScript -->
-<script src="files/vendor/jquery/jquery.min.js"></script>
-<script src="files/vendor/tether/tether.min.js"></script>
-<script src="files/vendor/bootstrap/js/bootstrap.min.js"></script>
-
+<%@include file="footer.jsp"%>
 </body>
 </html>
