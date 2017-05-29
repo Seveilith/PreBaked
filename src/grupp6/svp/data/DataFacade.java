@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 public class DataFacade {
 
     private static DataFacade instance = null;
-    private HashMap<Class<?>, DataTransferObject> servlets = new HashMap<>();
 
     public static DataFacade instance() {
 
@@ -37,29 +36,6 @@ public class DataFacade {
         per.register(ProductData.class, new ProductBroker());
     }
 
-    private DataTransferObject getDTO(HttpServlet servlet) {
-        servlets.put(ProductServlet.class, new ProductData());
-
-        return servlets.get(servlet.getClass());
-    }
-
-/*    public void answer(HttpServletResponse response, HttpServletRequest request, HttpServlet servlet) {
-        //DataTransferObject obj = getDTO(servlet);
-        //obj.setId(Integer.parseInt(request.getParameter("id")));
-
-        if (request.getParameter("operation").equals("delete")) {
-            delete(obj);
-            try {
-                response.sendRedirect("admin.jsp");
-                ElementBuilder.addDeleteMsg(request, response);
-
-
-            } catch (ServletException | IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
     public DataTransferObject find(DataTransferObject dto) {
         return per.find(dto);
     }
@@ -70,7 +46,6 @@ public class DataFacade {
 
     public void delete(DataTransferObject dto) {
         per.delete(dto);
-
     }
 
     public void insert(DataTransferObject dto) {
