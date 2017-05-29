@@ -38,13 +38,14 @@
                                                                   alt="Loga"></a>
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="navbar-nav ml-auto" id="nav-primary">
+                <% if(request.getSession().getAttribute("Username") != null && request.getSession().getAttribute("Username").equals("Admin01")) { %>
                 <li class="nav-item" id="paddinglight">
-                    <a class="nav-link" href="/product" title="Produkter">Produkter</a>
+                    <a class="nav-link" href="/admin" title="Admin">Admin</a>
                 </li>
+                <%}%>
                 <li class="nav-item" id="paddinglight">
-                    <a class="nav-link" href="basket.jsp" title="Varukorg">Varukorg</a>
+                    <a class="nav-link" href="/product" title="Produkter">Products</a>
                 </li>
-
                 <%
                     String username = (String) request.getSession().getAttribute("Username");
                     if (username == null) { %>
@@ -54,7 +55,7 @@
                 </li>
                 <% } else { %>
                 <li class="nav-item" id="paddinglight">
-                    <a class="nav-link" href="logout.jsp" title="Logga in">Logga ut</a>
+                    <a class="nav-link" href="/logout" title="Logga in">Logga ut</a>
                 </li>
                 <% } %>
             </ul>

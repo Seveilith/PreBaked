@@ -109,15 +109,15 @@
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
                     <li class="list-inline-item">
-                        <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-twitter fa-fw"></i> <span
+                        <a href="" class="btn btn-secondary btn-lg"><i class="fa fa-twitter fa-fw"></i> <span
                                 class="network-name">Twitter</span></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-github fa-fw"></i> <span
+                        <a href="" class="btn btn-secondary btn-lg"><i class="fa fa-github fa-fw"></i> <span
                                 class="network-name">Github</span></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-facebook fa-fw"></i> <span
+                        <a href="" class="btn btn-secondary btn-lg"><i class="fa fa-facebook fa-fw"></i> <span
                                 class="network-name">Facebook</span></a>
                     </li>
                 </ul>

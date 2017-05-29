@@ -30,6 +30,7 @@ public class DomainFacade {
     }
 
     public static void logout(HttpSession session) {
+        System.out.println("Terminating session for user: " + session.getAttribute("Username"));
         session.removeAttribute("Username");
     }
 }

@@ -39,11 +39,6 @@ public class ProductBroker extends Broker {
     }
 
     @Override
-    public void update(DataTransferObject object) {
-
-    }
-
-    @Override
     public void delete(DataTransferObject obj, Connection con) {
         PreparedStatement preparedStatement = null;
 

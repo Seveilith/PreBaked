@@ -14,19 +14,6 @@ public class Product extends DomainObject {
         data = new ProductData();
     }
 
-    public DataTransferObject delete(int id) {
-        data.setId(id);
-
-        return data;
-    }
-
-    public void find() {
-    }
-
-    public void insert() {
-    }
-
-
     @Override
     public DataTransferObject create(HttpServletRequest request, HttpServletResponse response) {
         data.setId(Integer.parseInt(request.getParameter("id")));
@@ -35,7 +22,6 @@ public class Product extends DomainObject {
         data.setProductPrice(Integer.parseInt(request.getParameter("price")));
         data.setProductQuantity(Integer.parseInt(request.getParameter("quantity")));
 
-        System.out.println("I produkten DF: " + data.getProductName());
         return data;
     }
 }

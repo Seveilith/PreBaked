@@ -3,8 +3,6 @@ package grupp6.svp.web.servlet;
 import grupp6.svp.data.DataFacade;
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DataTransferObjects.ProductData;
-import grupp6.svp.domain.Product;
-import grupp6.svp.web.ElementBuilder;
 import grupp6.svp.web.EnumPage;
 import grupp6.svp.web.PageFactory;
 
@@ -13,12 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "product", urlPatterns = {"/product"})
 public class ProductServlet extends HttpServlet {

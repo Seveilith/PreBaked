@@ -2,23 +2,13 @@ package grupp6.svp.data;
 
 import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.domain.*;
-
-import java.io.IOException;
-import java.sql.Connection;
 import java.util.*;
-
 import grupp6.svp.data.Persistence.*;
-import grupp6.svp.web.ElementBuilder;
-import grupp6.svp.web.servlet.*;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class DataFacade {
 
     private static DataFacade instance = null;
+    private PFacade per;
 
     public static DataFacade instance() {
 
@@ -28,11 +18,8 @@ public class DataFacade {
         return instance;
     }
 
-    private PFacade per;
-
     public void register() {
         per = new PFacade();
-        per.register(AdminData.class, new AdminBroker());
         per.register(ProductData.class, new ProductBroker());
     }
 
