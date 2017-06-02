@@ -1,10 +1,9 @@
 package grupp6.svp.web.servlet;
 
 import grupp6.svp.data.DataFacade;
-import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DataTransferObjects.ProductData;
 import grupp6.svp.domain.DomainFacade;
-import grupp6.svp.domain.Product;
+import grupp6.svp.domain.DomainObjects.Product;
 import grupp6.svp.web.EnumPage;
 import grupp6.svp.web.PageFactory;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "AdminServlet", urlPatterns = {"/admin"})
 public class AdminServlet extends HttpServlet {
@@ -38,7 +36,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     private void controlUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = (String)request.getSession().getAttribute("Username");
+        String username = (String) request.getSession().getAttribute("Username");
 
         if (username == null) {
             System.out.println("PreBaked: Username is not defined -> User is not logged in! Redirecting to index.jsp");

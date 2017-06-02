@@ -1,17 +1,13 @@
 package grupp6.svp.domain;
 
-import java.util.HashMap;
-import javax.servlet.http.HttpServlet;
+import grupp6.svp.data.DataFacade;
+import grupp6.svp.domain.DomainObjects.DomainObject;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import grupp6.svp.data.DataFacade;
-import grupp6.svp.data.DataTransferObjects.*;
-import grupp6.svp.web.servlet.*;
-
 public class DomainFacade {
-
     private static DomainFacade instance = null;
 
     public static DomainFacade instance() {

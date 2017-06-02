@@ -1,4 +1,4 @@
-package grupp6.svp.domain;
+package grupp6.svp.domain.DomainObjects;
 
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DataTransferObjects.ProductData;
@@ -6,7 +6,7 @@ import grupp6.svp.data.DataTransferObjects.ProductData;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Product extends DomainObject {
+public class Product extends DomainObject  {
 
     private ProductData data;
 

@@ -23,34 +23,17 @@ public class ProductServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        loadProducts(response, request);
-        PageFactory.instance().answer(request,response, EnumPage.PRODUCTS);
+        PageFactory.instance().answer(request, response, EnumPage.PRODUCTS);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
-    private void loadProducts(HttpServletResponse response, HttpServletRequest request) throws IOException {
-        List<ProductData> products = getAllFromStorage();
-        request.setAttribute("products", products);
-    }
-
-    private List<ProductData> getAllFromStorage() {
-        ProductData data = new ProductData();
-        List<DataTransferObject> DTOs = DataFacade.instance().getAllFromStorage(data);
-        List<ProductData> products = new ArrayList<>();
-
-        for (DataTransferObject dto : DTOs) {
-            products.add((ProductData) dto);
-        }
-        return products;
-    }
-
-    private void findProduct(HttpServletRequest request, HttpServletResponse response) {
+   /* private void findProduct(HttpServletRequest request, HttpServletResponse response) {
         ProductData obj = new ProductData(Integer.parseInt(request.getParameter("id")));
         DataTransferObject temp = DataFacade.instance().find(obj);
-    }
+    }*/
 }
 
 

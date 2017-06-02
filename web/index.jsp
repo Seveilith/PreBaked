@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<%@ include file="navbar.jsp"%>
+<%@ include file="navbar.jsp" %>
 
 <!-- Header -->
 <header class="intro-header">
@@ -53,8 +53,11 @@
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
                 <h2 class="section-heading">Device Mockups<br>by PreBaked</h2>
-                <p class="lead">Turn your designs into high quality computing, products specified by you and made by our designers. For inspiration check out
-                    <a target="_blank" href="http://www.itpro.co.uk/mobile/21862/raspberry-pi-top-27-projects-to-try-yourself">IT-Pro</a>! Visit their website to
+                <p class="lead">Turn your designs into high quality computing, products specified by you and made by our
+                    designers. For inspiration check out
+                    <a target="_blank"
+                       href="http://www.itpro.co.uk/mobile/21862/raspberry-pi-top-27-projects-to-try-yourself">IT-Pro</a>!
+                    Visit their website to
                     get some design input and inspiration!</p>
             </div>
             <div class="col-lg-5 pull-lg-5">
@@ -71,9 +74,12 @@
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
                 <h1 class="section-heading text-white">Accelerate Your Experience</h1>
-                <p class="lead text-white">Our product features the innovative new Optane Technology from Intel that delivers breakthrough speed
+                <p class="lead text-white">Our product features the innovative new Optane Technology from Intel that
+                    delivers breakthrough speed
                     and uncompromised storage capacity. </p><br>
-                <a class="btn btn-default" href="http://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html">Learn More</a>
+                <a class="btn btn-default"
+                   href="http://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html">Learn
+                    More</a>
             </div>
         </div>
     </div><!-- /.container -->
@@ -126,6 +132,6 @@
     </div><!-- /.container -->
 </aside><!-- /.banner -->
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 </body>
 </html>

@@ -38,7 +38,7 @@
                                                                   alt="Loga"></a>
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="navbar-nav ml-auto" id="nav-primary">
-                <% if(request.getSession().getAttribute("Username") != null && request.getSession().getAttribute("Username").equals("Admin01")) { %>
+                <% if (request.getSession().getAttribute("Username") != null && request.getSession().getAttribute("Username").equals("Admin01")) { %>
                 <li class="nav-item" id="paddinglight">
                     <a class="nav-link" href="/admin" title="Admin">Admin</a>
                 </li>

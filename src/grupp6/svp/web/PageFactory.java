@@ -1,15 +1,18 @@
 package grupp6.svp.web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import grupp6.svp.data.DataFacade;
+import grupp6.svp.data.DataTransferObjects.DataTransferObject;
+import grupp6.svp.data.DataTransferObjects.ProductData;
+import grupp6.svp.domain.DomainFacade;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import grupp6.svp.data.DataTransferObjects.ProductData;
-import grupp6.svp.domain.DomainFacade;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PageFactory {
     private static PageFactory instance = null;
@@ -34,7 +37,7 @@ public class PageFactory {
                 case LOGOUT:
                     HttpSession session = request.getSession();
                     DomainFacade.logout(session);
-                    this.answer(request, response, EnumPage.HOME);
+                    answer(request, response, EnumPage.HOME);
                     break;
                 case PRODUCTS:
                     products(request, response);
@@ -71,8 +74,11 @@ public class PageFactory {
     }
 
     private void products(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<ProductData> products = (ArrayList<ProductData>) request.getAttribute("products");
-        response.setContentType("text/html");
+        List<ProductData> products = new ArrayList<>();
+
+        for (DataTransferObject dto : DataFacade.instance().getAllFromStorage(new ProductData())) {
+            products.add((ProductData) dto);
+        }
 
         PrintWriter out = response.getWriter();
         ElementBuilder.addTop(out);
@@ -88,8 +94,8 @@ public class PageFactory {
         out.print("<th>ProductPrice</th>");
         out.print("<th>ProductQuantity</th></tr>");
 
-        if (products != null){
-            for (ProductData data : products){
+        if (products != null) {
+            for (ProductData data : products) {
                 out.print("<tr><td>" + data.getProductName() + "</td>");
                 out.print("<td>" + data.getProductDescription() + "</td>");
                 out.print("<td>" + data.getProductPrice() + "</td>");

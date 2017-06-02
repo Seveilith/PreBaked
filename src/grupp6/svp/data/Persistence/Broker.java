@@ -1,8 +1,6 @@
 package grupp6.svp.data.Persistence;
 
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
-import grupp6.svp.data.DbConnect;
-
 import java.sql.Connection;
 import java.util.List;
 
