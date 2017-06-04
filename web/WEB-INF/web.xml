@@ -35,30 +35,4 @@
     </servlet-mapping>
 
     <!-- BELOW HERE WE REGISTER SERVLETS -->
-
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>grupp6.svp.web.servlet.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>grupp6.svp.web.servlet.LogoutServlet</servlet-class>
-    </servlet>
-
-    <servlet>
-        <servlet-name>ProductServlet</servlet-name>
-        <servlet-class>grupp6.svp.web.servlet.ProductServlet</servlet-class>
-    </servlet>
-
-
-
-
-    <servlet>
-        <servlet-name>UserHomeServlet</servlet-name>
-        <servlet-class>grupp6.svp.web.servlet.UserHomeServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>BasketServlet</servlet-name>
-        <servlet-class>grupp6.svp.web.servlet.BasketServlet</servlet-class>
-    </servlet>
 </web-app>

@@ -1,15 +1,14 @@
 package grupp6.svp.web.servlet;
 
-import java.io.IOException;
+import grupp6.svp.web.EnumPage;
+import grupp6.svp.web.PageFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import grupp6.svp.web.EnumPage;
-import grupp6.svp.web.PageFactory;
+import java.io.IOException;
 
 @WebServlet(name = "logout", urlPatterns = {"/logout"})
 public class LogoutServlet extends HttpServlet {

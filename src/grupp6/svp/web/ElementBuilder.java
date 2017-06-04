@@ -1,18 +1,17 @@
 package grupp6.svp.web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ElementBuilder {
 
     /**
      * CONTAINERS
      **/
-    public static void addTop(PrintWriter output){
+    public static void addTop(PrintWriter output) {
         output.print("<!DOCTYPE html>\n" +
                 "<html lang=\"en\">");
     }
@@ -21,12 +20,12 @@ public class ElementBuilder {
         request.getRequestDispatcher("/head.jsp").include(request, response);
     }
 
-    public static void addNavBar(HttpServletRequest request, HttpServletResponse response, PrintWriter out)throws ServletException, IOException{
+    public static void addNavBar(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws ServletException, IOException {
         request.getRequestDispatcher("/navbar.jsp").include(request, response);
     }
 
-    public static void addEnd(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws ServletException, IOException{
-        request.getRequestDispatcher("footer.jsp").include(request,response);
+    public static void addEnd(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws ServletException, IOException {
+        request.getRequestDispatcher("footer.jsp").include(request, response);
         out.print("</body>");
         out.append("</html>");
     }

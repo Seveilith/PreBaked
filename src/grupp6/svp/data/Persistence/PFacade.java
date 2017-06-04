@@ -1,16 +1,10 @@
 package grupp6.svp.data.Persistence;
 
-import grupp6.svp.data.DataFacade;
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 import grupp6.svp.data.DbConnect;
-
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by malinvagnborg on 2017-05-09.
- */
 public class PFacade {
     protected HashMap<Class<?>, Broker> brokers = new HashMap<>();
 
@@ -36,7 +30,7 @@ public class PFacade {
         broker.insert(data, DbConnect.getConnection());
     }
 
-    public List<DataTransferObject> getAllFromStorage(DataTransferObject data){
+    public List<DataTransferObject> getAllFromStorage(DataTransferObject data) {
         Broker broker = brokers.get(data.getClass());
 
         return broker.getAllFromStorage(DbConnect.getConnection());

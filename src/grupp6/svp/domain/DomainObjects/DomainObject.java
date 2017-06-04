@@ -1,4 +1,4 @@
-package grupp6.svp.domain;
+package grupp6.svp.domain.DomainObjects;
 
 import grupp6.svp.data.DataTransferObjects.DataTransferObject;
 

@@ -1,6 +1,8 @@
 package grupp6.svp.data;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class DbConnect {

@@ -1,24 +1,30 @@
 package grupp6.svp.data;
 
 import grupp6.svp.data.DataTransferObjects.*;
-import grupp6.svp.domain.*;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.util.*;
-
 import grupp6.svp.data.Persistence.*;
-import grupp6.svp.web.ElementBuilder;
-import grupp6.svp.web.servlet.*;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import grupp6.svp.domain.User;
+import java.util.HashMap;
+import java.util.List;
 
 public class DataFacade {
 
     private static DataFacade instance = null;
+    private PFacade per;
+
+    /**
+     * === USERS ===
+     * This part of the facade handles construction of ghost users
+     **/
+    private static HashMap<String, User> users = new HashMap<>();
+
+    static { //Add, remove, or edit Users for the system here
+        new User("Test", "Test");
+        new User("Admin01", "Test");
+        new User("Kund1@gmail.com", "Test");
+        new User("Kund2@gmail.com", "Test");
+        new User("Desig11", "Test");
+        new User("Desig12", "Test");
+    }
 
     public static DataFacade instance() {
 
@@ -28,11 +34,8 @@ public class DataFacade {
         return instance;
     }
 
-    private PFacade per;
-
     public void register() {
         per = new PFacade();
-        per.register(AdminData.class, new AdminBroker());
         per.register(ProductData.class, new ProductBroker());
     }
 
@@ -50,21 +53,6 @@ public class DataFacade {
 
     public void insert(DataTransferObject dto) {
         per.insert(dto);
-    }
-
-    /**
-     * === USERS ===
-     * This part of the facade handles construction of ghost users
-     **/
-    private static HashMap<String, User> users = new HashMap<>();
-
-    static { //Add, remove, or edit Users for the system here
-        new User("Test", "Test");
-        new User("Admin01", "Test");
-        new User("Kund1@gmail.com", "Test");
-        new User("Kund2@gmail.com", "Test");
-        new User("Desig11", "Test");
-        new User("Desig12", "Test");
     }
 
     /**

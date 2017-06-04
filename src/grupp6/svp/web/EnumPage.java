@@ -1,17 +1,6 @@
 package grupp6.svp.web;
 
-/**
- * This enum helps us see what pages exists on this website,
- * both static and dynamic. The enum collaborates with the
- * PageFactory to guide users between different pages.
- * Below you can see links that explain each of the enum values more;
- * <p>
- * <li>{@link #HOME}</li>
- *
- * @author joncr49
- */
 public enum EnumPage {
-
     /**
      * The home page is a static page; index.jsp
      * This is the home page of the website, it is here that everything starts.
@@ -30,11 +19,13 @@ public enum EnumPage {
      */
     LOGOUT,
     /**
-     * Page where user important information is displayed. This page is generated
-     * and will only show if the user is online.
+     * Page where admin important information is displayed. This page is generated
+     * and will only show if the Admin is logged in.
      */
     ADMIN,
-
+    /*
+    * Page that shows products
+    * */
     PRODUCTS,
 
 }

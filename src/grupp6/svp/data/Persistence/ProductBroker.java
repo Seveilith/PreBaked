@@ -1,17 +1,10 @@
 package grupp6.svp.data.Persistence;
 
-import grupp6.svp.data.DataTransferObjects.DataTransferObject;
-import grupp6.svp.data.DataTransferObjects.ProductData;
+import grupp6.svp.data.DataTransferObjects.*;
 import grupp6.svp.data.DbConnect;
-import sun.security.util.ObjectIdentifier;
-import grupp6.svp.domain.*;
-
-import javax.xml.crypto.Data;
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class ProductBroker extends Broker {
 
@@ -22,7 +15,6 @@ public class ProductBroker extends Broker {
                 " VALUES(?,?,?,?,?)";
 
         ProductData product = (ProductData) object;
-
 
         try {
             PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
@@ -39,14 +31,8 @@ public class ProductBroker extends Broker {
     }
 
     @Override
-    public void update(DataTransferObject object) {
-
-    }
-
-    @Override
     public void delete(DataTransferObject obj, Connection con) {
         PreparedStatement preparedStatement = null;
-
         String deleteSQL = "DELETE FROM pgiei02.Product WHERE ProductID = ?";
 
         try {
@@ -54,7 +40,6 @@ public class ProductBroker extends Broker {
             preparedStatement = con.prepareStatement(deleteSQL);
             preparedStatement.setInt(1, obj.getId());
 
-            // execute delete SQL stetement
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -74,14 +59,12 @@ public class ProductBroker extends Broker {
         }
     }
 
-
     @Override
     public DataTransferObject find(DataTransferObject obj) {
         DataTransferObject temp = getFromStorage(obj.getId(), DbConnect.getConnection());
 
         return temp;
     }
-
 
     @Override
     public DataTransferObject getFromStorage(int id, Connection con) {
@@ -109,18 +92,15 @@ public class ProductBroker extends Broker {
         return productData;
     }
 
-    public List<DataTransferObject> getAllFromStorage(Connection con){
-
+    public List<DataTransferObject> getAllFromStorage(Connection con) {
         List<DataTransferObject> products = new ArrayList<>();
         String sqlSelectAll = "SELECT * FROM pgiei02.Product";
 
-        Statement stmt = null;
-
         try {
-            stmt = con.createStatement();
+            Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sqlSelectAll);
 
-            while (rs.next()){
+            while (rs.next()) {
                 ProductData data = new ProductData();
                 data.setId(rs.getInt("ProductID"));
                 data.setProductName(rs.getString("ProductName"));
@@ -130,8 +110,10 @@ public class ProductBroker extends Broker {
 
                 products.add(data);
             }
-        return products;
-        } catch (SQLException e){
+
+
+            return products;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
