@@ -60,13 +60,6 @@ public class ProductBroker extends Broker {
     }
 
     @Override
-    public DataTransferObject find(DataTransferObject obj) {
-        DataTransferObject temp = getFromStorage(obj.getId(), DbConnect.getConnection());
-
-        return temp;
-    }
-
-    @Override
     public DataTransferObject getFromStorage(int id, Connection con) {
         ProductData productData = new ProductData();
 
@@ -84,8 +77,6 @@ public class ProductBroker extends Broker {
                 productData.setProductPrice(rs.getInt("ProductPrice"));
                 productData.setProductQuantity(rs.getInt("ProductQuantity"));
             }
-
-            DbConnect.returnConnection(con);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -93,6 +84,7 @@ public class ProductBroker extends Broker {
     }
 
     public List<DataTransferObject> getAllFromStorage(Connection con) {
+
         List<DataTransferObject> products = new ArrayList<>();
         String sqlSelectAll = "SELECT * FROM pgiei02.Product";
 
